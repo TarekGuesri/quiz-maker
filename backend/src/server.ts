@@ -1,16 +1,20 @@
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import colors from 'colors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const morgan = require('morgan');
-const colors = require('colors');
-const path = require('path');
-const bodyParser = require('body-parser');
-const rateLimit = require("express-rate-limit");
-const helmet  = require('helmet');
+const path = __dirname + '/./../config/config.env';
+console.log(path);
+
+// Load env vars
+dotenv.config();
+// dotenv.config({ path: __dirname + '/../config/config.env' });
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+
 
 // Enabling cors
 app.use(cors());
@@ -18,16 +22,32 @@ app.use(cors());
 // Enabling helmet
 app.use(helmet());
 
+// Limiting each IP to 100 requests per windowMs
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100
+});
+
+//  apply to all requests
+app.use(limiter);
+
+// body parsing middleware
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
+
+
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// Limiting each IP to 100 requests per windowMs
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100
-});
+// Defining Routes
+app.use('/rest', require('./routes/rest'));
+
+
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () =>
   console.log(
