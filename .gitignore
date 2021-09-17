@@ -1,0 +1,21 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+# IntelliJ project files
+.idea
+
+# Dependencies
+/node_modules
+
+# Test coverage
+/coverage
+
+# Production files
+/build
+/dist
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
