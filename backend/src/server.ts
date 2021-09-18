@@ -6,15 +6,10 @@ import colors from 'colors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 
-const path = __dirname + '/./../config/config.env';
-console.log(path);
-
 // Load env vars
 dotenv.config();
-// dotenv.config({ path: __dirname + '/../config/config.env' });
 
 const app = express();
-
 
 // Enabling cors
 app.use(cors());
