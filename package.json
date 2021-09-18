@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "cd backend && yarn dev",
+    "client": "cd frontend && yarn start",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.1"
+  }
 }
