@@ -1,10 +1,11 @@
 import {Request, Response, Router} from 'express'
+import {getQuizzes} from '../../controllers/quizzes'
 
 const quizzesRouter : Router = Router();
 
-// Quizzes
-quizzesRouter.get('/' , (req: Request, res: Response) => {
-  res.json('test2')
-})
+// @route GET quizzes/
+// @desc Gets quizzes
+// @access Public
+quizzesRouter.get('/' , getQuizzes)
 
 export = quizzesRouter;
