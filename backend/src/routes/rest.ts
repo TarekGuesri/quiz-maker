@@ -1,8 +1,11 @@
-import  {Router} from 'express';
+import { Router } from "express";
 
-const restRouter : Router = Router();
+// Importing routes
+import quizzesRoute from "./rest/quizzes";
+
+const restRouter: Router = Router();
 
 // Quizzes
-restRouter.use('/quizzes', require('./rest/quizzes'));
+restRouter.use("/quizzes", quizzesRoute);
 
-export = restRouter
+export = restRouter;

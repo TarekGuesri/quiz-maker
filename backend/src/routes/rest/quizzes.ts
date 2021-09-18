@@ -1,11 +1,11 @@
-import {Request, Response, Router} from 'express'
-import {getQuizzes} from '../../controllers/quizzes'
+import { Router } from "express";
+import { getQuizzes } from "../../controllers/quizzes";
 
-const quizzesRouter : Router = Router();
+const quizzesRouter: Router = Router();
 
 // @route GET quizzes/
 // @desc Gets quizzes
 // @access Public
-quizzesRouter.get('/' , getQuizzes)
+quizzesRouter.get("/", getQuizzes);
 
 export = quizzesRouter;
