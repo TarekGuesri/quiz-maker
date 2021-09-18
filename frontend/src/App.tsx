@@ -1,13 +1,14 @@
 import React, { FC, Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Loading from 'src/components/layout/loading';
+import Theme from 'src/components/theme';
 
 import { routes } from './routes';
 import './App.css';
 
 const App: FC = () => {
   return (
-    <div className="App">
+    <Theme>
       <Suspense fallback={<Loading />}>
         <Switch>
           {routes.map((route, index) => (
@@ -20,7 +21,7 @@ const App: FC = () => {
           ))}
         </Switch>
       </Suspense>
-    </div>
+    </Theme>
   );
 };
 

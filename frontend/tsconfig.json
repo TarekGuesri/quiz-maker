@@ -22,6 +22,6 @@
     "baseUrl": "." 
   },
   "include": [
-    "src"
+    "src", "src/**/*"
   ]
 }
