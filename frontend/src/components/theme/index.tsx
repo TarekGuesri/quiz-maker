@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import varelaRound from 'src/assets/fonts/VarelaRound-Regular.ttf';
 
-const Theme: FC = (props) => {
+export const Theme: FC = (props) => {
   const darkMode: boolean = true;
 
   const theme = createTheme({
@@ -37,5 +37,3 @@ const Theme: FC = (props) => {
 Theme.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Theme;

@@ -14,9 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Loading: React.FC = () => {
+export const Loading: React.FC = () => {
   const classes = useStyles();
   return <CircularProgress size={50} className={classes.root} />;
 };
-
-export default Loading;
