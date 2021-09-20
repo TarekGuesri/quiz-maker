@@ -1,4 +1,5 @@
 import React, { FC, Suspense, lazy } from 'react';
+import Container from '@mui/material/Container';
 import { Route, Switch } from 'react-router-dom';
 import { Loading } from 'src/components/layout/loading';
 import { Navbar } from 'src/components/layout/navbar';
@@ -11,17 +12,19 @@ const App: FC = () => {
   return (
     <Theme>
       <Suspense fallback={<Loading />}>
-        <Navbar />
-        <Switch>
-          {routes.map((route, index) => (
-            <Route
-              key={`route-${index}`}
-              component={lazy(() => route.component)}
-              path={route.path}
-              exact={route.exact}
-            />
-          ))}
-        </Switch>
+        <Container maxWidth="md">
+          <Navbar />
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                key={`route-${index}`}
+                component={lazy(() => route.component)}
+                path={route.path}
+                exact={route.exact}
+              />
+            ))}
+          </Switch>
+        </Container>
       </Suspense>
     </Theme>
   );
