@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 
 interface HeroProps {}
 
-export const Hero: React.FC<HeroProps> = ({}) => {
+export const Hero: React.FC<HeroProps> = () => {
   const classes = useStyles();
 
   return (
