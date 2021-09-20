@@ -5,14 +5,22 @@ export interface UIState {
 }
 
 const initialState: UIState = {
-  darkMode: true,
+  darkMode: localStorage.getItem('darkMode') === 'on',
 };
 
 export const uiSlice = createSlice({
   name: 'ui',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
-  reducers: {},
+  reducers: {
+    switchDarkMode: (state) => {
+      state.darkMode = !state.darkMode;
+
+      localStorage.setItem('darkMode', state.darkMode ? 'on' : 'off');
+    },
+  },
 });
+
+export const { switchDarkMode } = uiSlice.actions;
 
 export default uiSlice.reducer;

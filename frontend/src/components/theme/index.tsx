@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import PropTypes from 'prop-types';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useAppSelector } from 'src/redux/hooks';
 import varelaRound from 'src/assets/fonts/VarelaRound-Regular.ttf';
 
 export const Theme: FC = (props) => {
-  const darkMode: boolean = true;
+  const { darkMode } = useAppSelector((state) => state.ui);
 
   const theme = createTheme({
     palette: { mode: darkMode ? 'dark' : 'light' },
