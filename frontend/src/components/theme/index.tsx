@@ -9,7 +9,18 @@ export const Theme: FC = (props) => {
   const { darkMode } = useAppSelector((state) => state.ui);
 
   const theme = createTheme({
-    palette: { mode: darkMode ? 'dark' : 'light' },
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+      primary: {
+        main: '#8e49de',
+        // contrastText:
+      },
+      secondary: {
+        main: '#f9de4a',
+      },
+      contrastThreshold: 3,
+      tonalOffset: 0.2,
+    },
     typography: {
       fontFamily: 'Varela Round',
     },

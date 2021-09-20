@@ -27,13 +27,19 @@ export const Navbar: React.FC<NavbarProps> = () => {
     <Box sx={{ flexGrow: 1 }} py={3}>
       <AppBar position="static" elevation={0} color="transparent">
         <Toolbar className={classes.toolbar}>
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            color="primary"
+            variant="h4"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
             QuizMaker
           </Typography>
           <FormGroup>
             <FormControlLabel
               control={
                 <Switch
+                  color="primary"
                   checked={darkMode}
                   onChange={() => dispatch(switchDarkMode())}
                 />
