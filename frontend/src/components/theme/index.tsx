@@ -11,6 +11,10 @@ export const Theme: FC = (props) => {
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
+      background: {
+        default: darkMode ? '#333' : '#f7f7f7',
+        paper: darkMode ? '#333' : '#fbfbfb',
+      },
       primary: {
         main: '#8e49de',
         // contrastText:
