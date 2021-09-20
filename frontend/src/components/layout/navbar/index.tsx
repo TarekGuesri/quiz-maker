@@ -10,14 +10,14 @@ import Typography from '@mui/material/Typography';
 import { useAppSelector, useAppDispatch } from 'src/redux/hooks';
 import { switchDarkMode } from 'src/redux/ui/uiSlice';
 
-interface NavbarProps {}
-
 const useStyles = makeStyles({
   toolbar: {
     paddingLeft: '0px',
     paddingRight: '0px',
   },
 });
+
+interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = () => {
   const classes = useStyles();
