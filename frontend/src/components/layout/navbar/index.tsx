@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import { useHistory, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
@@ -22,7 +22,6 @@ interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = () => {
   const classes = useStyles();
-  let history = useHistory();
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSelector((state) => state.ui);
   return (
@@ -34,7 +33,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
             variant="h4"
             component="div"
             sx={{ flexGrow: 1 }}
-            onClick={() => history.push('/')}
           >
             <NavLink to="/" style={{ textDecoration: 'none', color: 'unset' }}>
               QuizMaker
