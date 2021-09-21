@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = () => {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Link to="create">
+        <Link to="/create">
           {' '}
           <Button color="primary" variant="contained" size="large">
             Create a Quiz
