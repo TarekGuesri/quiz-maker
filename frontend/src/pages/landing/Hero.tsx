@@ -1,16 +1,30 @@
 import React from 'react';
-import { makeStyles } from '@mui/styles';
+import { Link } from 'react-router-dom';
+import { makeStyles, createStyles } from '@mui/styles';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Theme } from '@mui/material';
 
-const useStyles = makeStyles({
-  root: {
-    textAlign: 'center',
-  },
-});
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      textAlign: 'center',
+    },
+    brand: {
+      color: theme.palette.primary.main,
+    },
+    cardContent: {
+      padding: theme.spacing(4),
+    },
+    cardActions: {
+      justifyContent: 'center',
+      marginBottom: theme.spacing(3),
+    },
+  })
+);
 
 interface HeroProps {}
 
@@ -19,24 +33,21 @@ export const Hero: React.FC<HeroProps> = () => {
 
   return (
     <Card sx={{ minWidth: 275 }} className={classes.root}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
+      <CardContent className={classes.cardContent}>
+        <Typography variant="h5" component="div" mb={4}>
+          Welcome to <span className={classes.brand}>QuizMaker</span>
         </Typography>
-        <Typography variant="h5" component="div">
-          benevolent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+        <Typography variant="body1">
+          Here you can make your own quizzes and share them with friends!
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
+      <CardActions className={classes.cardActions}>
+        <Link to="create">
+          {' '}
+          <Button color="primary" variant="contained" size="large">
+            Create a Quiz
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );
