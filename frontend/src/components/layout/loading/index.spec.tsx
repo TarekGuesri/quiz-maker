@@ -3,7 +3,7 @@
  */
 
 import { cleanup, render } from '@testing-library/react';
-import Loading from '.';
+import { Loading } from '.';
 
 describe('src/components/loading/index.tsx', () => {
   afterEach(() => cleanup());
