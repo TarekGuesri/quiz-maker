@@ -39,6 +39,13 @@ export const Theme: FC = (props) => {
             src: url(${varelaRound}) format('truetype');
         `,
       },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: '11px',
+          },
+        },
+      },
     },
   });
 

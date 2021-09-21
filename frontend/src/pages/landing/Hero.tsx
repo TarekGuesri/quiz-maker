@@ -12,12 +12,16 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       textAlign: 'center',
+      borderRadius: theme.spacing(2),
     },
     brand: {
       color: theme.palette.primary.main,
     },
     cardContent: {
       padding: theme.spacing(4),
+    },
+    button: {
+      borderRadius: theme.spacing(2),
     },
     cardActions: {
       justifyContent: 'center',
