@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { Hero } from './Hero';
+import React, { FC } from "react";
+import { Hero } from "./Hero";
 
 const LandingPage: FC = () => {
   return (

@@ -1,12 +1,12 @@
-import React, { FC, Suspense, lazy } from 'react';
-import Container from '@mui/material/Container';
-import { Route, Switch } from 'react-router-dom';
-import { Loading } from 'src/components/layout/loading';
-import { Navbar } from 'src/components/layout/navbar';
-import { Theme } from 'src/components/theme';
+import React, { FC, Suspense, lazy } from "react";
+import Container from "@mui/material/Container";
+import { Route, Switch } from "react-router-dom";
+import { Loading } from "src/components/layout/loading";
+import { Navbar } from "src/components/layout/navbar";
+import { Theme } from "src/components/theme";
 
-import { routes } from './routes';
-import './App.css';
+import { routes } from "./routes";
+import "./App.css";
 
 const App: FC = () => {
   return (

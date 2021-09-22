@@ -1,22 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface UIState {
   darkMode: boolean;
 }
 
 const initialState: UIState = {
-  darkMode: localStorage.getItem('darkMode') === 'on',
+  darkMode: localStorage.getItem("darkMode") === "on",
 };
 
 export const uiSlice = createSlice({
-  name: 'ui',
+  name: "ui",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     switchDarkMode: (state) => {
       state.darkMode = !state.darkMode;
 
-      localStorage.setItem('darkMode', state.darkMode ? 'on' : 'off');
+      localStorage.setItem("darkMode", state.darkMode ? "on" : "off");
     },
   },
 });

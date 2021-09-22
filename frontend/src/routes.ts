@@ -1,7 +1,7 @@
 export const routes = [
   {
-    component: import('src/pages/landing'),
-    path: '/',
+    component: import("src/pages/landing"),
+    path: "/",
     exact: true,
   },
 ];

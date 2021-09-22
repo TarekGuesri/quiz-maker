@@ -1,0 +1,10 @@
+node_modules/
+dist
+coverage
+*.*
+!*.tsx
+!*.ts
+!*.js
+!*.json
+*.svg
+*.ttf
