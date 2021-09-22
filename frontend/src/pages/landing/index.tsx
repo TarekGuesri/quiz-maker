@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Hero } from "./Hero";
 
-const LandingPage: FC = () => {
+const Landing: FC = () => {
   return (
     <div>
       <Hero />
@@ -9,4 +9,4 @@ const LandingPage: FC = () => {
   );
 };
 
-export default LandingPage;
+export default Landing;
