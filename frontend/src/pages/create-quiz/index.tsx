@@ -1,21 +1,87 @@
-import Box from "@mui/material/Box";
-import React from "react";
+import React, { useState } from "react";
+import { createStyles, makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import { CardBox } from "src/components/cards/card-box";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    formControlLabel: {
+      marginBottom: theme.spacing(2),
+    },
+  }),
+);
+
+interface QuestionOption {
+  text: string;
+  isCorrect: boolean;
+}
+interface Question {
+  content: string;
+  options: [QuestionOption, QuestionOption, QuestionOption, QuestionOption];
+}
+interface CreateQuizState {
+  questionIndex: number;
+  questions: [Question];
+}
 
 const CreateQuiz: React.FC = ({}) => {
+  const classes = useStyles();
+  const [state, setState] = useState<CreateQuizState>({
+    questionIndex: 0,
+    questions: [
+      {
+        content: "",
+        options: [
+          { text: "", isCorrect: true },
+          { text: "", isCorrect: false },
+          { text: "", isCorrect: false },
+          { text: "", isCorrect: false },
+        ],
+      },
+    ],
+  });
+
+  const [value, setValue] = React.useState("female");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue((event.target as HTMLInputElement).value);
+  };
+
   return (
-    <Box
-      component="form"
-      sx={{
-        "& > :not(style)": { m: 1, width: "25ch" },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <TextField id="filled-basic" label="Filled" variant="filled" />
-      <TextField id="standard-basic" label="Standard" variant="standard" />
-    </Box>
+    <CardBox>
+      <Typography variant="h5" component="div" mb={4}>
+        Create a quiz
+      </Typography>
+
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Gender</FormLabel>
+        <RadioGroup
+          aria-label="gender"
+          name="controlled-radio-buttons-group"
+          value={value}
+          onChange={handleChange}
+        >
+          <FormControlLabel
+            className={classes.formControlLabel}
+            value="female"
+            control={<Radio />}
+            label={<TextField />}
+          />
+          <FormControlLabel
+            value="male"
+            control={<Radio />}
+            label={<TextField />}
+          />
+        </RadioGroup>
+      </FormControl>
+    </CardBox>
   );
 };
 
