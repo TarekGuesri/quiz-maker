@@ -1,11 +1,11 @@
+import "./app.css";
 import React, { FC } from "react";
-import Container from "@mui/material/Container";
 import { Route, Switch } from "react-router-dom";
+import Container from "@mui/material/Container";
 import { Navbar } from "src/components/layout/navbar";
 import { Theme } from "src/components/theme";
 
 import { routes } from "./routes";
-import "./App.css";
 
 const App: FC = () => {
   return (

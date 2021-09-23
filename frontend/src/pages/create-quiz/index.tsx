@@ -1,10 +1,8 @@
-import React from "react";
 import Box from "@mui/material/Box";
+import React from "react";
 import TextField from "@mui/material/TextField";
 
-interface CreateQuizProps {}
-
-const CreateQuiz: React.FC<CreateQuizProps> = ({}) => {
+const CreateQuiz: React.FC = ({}) => {
   return (
     <Box
       component="form"

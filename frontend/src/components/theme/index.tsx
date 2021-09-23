@@ -1,7 +1,8 @@
 import React, { FC } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import PropTypes from "prop-types";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 import { useAppSelector } from "src/redux/hooks";
 import varelaRound from "src/assets/fonts/VarelaRound-Regular.ttf";
 

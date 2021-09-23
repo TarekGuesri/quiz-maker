@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Hero } from "./Hero";
+import { Hero } from "./hero";
 
 const Landing: FC = () => {
   return (

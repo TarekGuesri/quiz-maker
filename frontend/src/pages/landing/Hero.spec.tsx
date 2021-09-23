@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { Theme } from "src/components/theme";
 import { store } from "src/redux/store";
 import { history } from "src/utils/history";
-import { Hero } from "./Hero";
+import { Hero } from "./hero";
 
 describe("src/components/loading/Hero.tsx", () => {
   afterEach(() => cleanup());

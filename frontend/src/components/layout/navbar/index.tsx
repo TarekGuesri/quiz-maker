@@ -1,15 +1,15 @@
-import React from "react";
-import { makeStyles } from "@mui/styles";
-import { NavLink } from "react-router-dom";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
+import { useAppDispatch, useAppSelector } from "src/redux/hooks";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormGroup from "@mui/material/FormGroup";
+import { NavLink } from "react-router-dom";
+import React from "react";
+import Switch from "@mui/material/Switch";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useAppSelector, useAppDispatch } from "src/redux/hooks";
-import { switchDarkMode } from "src/redux/ui/uiSlice";
+import { makeStyles } from "@mui/styles";
+import { switchDarkMode } from "src/redux/ui/ui-slice";
 
 const useStyles = makeStyles({
   toolbar: {
@@ -18,9 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-interface NavbarProps {}
-
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar: React.FC = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSelector((state) => state.ui);

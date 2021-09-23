@@ -4,6 +4,7 @@
 
 import { cleanup, render } from "@testing-library/react";
 import { Loading } from ".";
+import React from "react";
 
 describe("src/components/loading/index.tsx", () => {
   afterEach(() => cleanup());

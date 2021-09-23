@@ -1,4 +1,4 @@
-import { LandingPage, CreateQuizPage } from "src/pages/pageListAsync";
+import { CreateQuizPage, LandingPage } from "src/pages/page-list-async";
 
 export const routes = [
   {
