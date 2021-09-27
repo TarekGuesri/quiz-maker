@@ -94,7 +94,9 @@ const CreateQuiz: React.FC = ({}) => {
     _event: React.ChangeEvent<unknown>,
     value: number,
   ) => {
-    console.log(value);
+    if (value) {
+      setState({ ...state, questionIndex: value - 1 });
+    }
   };
 
   const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,7 +107,7 @@ const CreateQuiz: React.FC = ({}) => {
 
   const handleAddQuestion = () => {
     const firstAnswerID = uuidv4();
-    const { questions, questionIndex } = state;
+    const { questions } = state;
 
     const newQuestions: Question[] = [
       ...questions,
@@ -124,7 +126,7 @@ const CreateQuiz: React.FC = ({}) => {
     setState({
       ...state,
       questions: newQuestions,
-      questionIndex: questionIndex + 1,
+      questionIndex: newQuestions.length - 1,
     });
   };
 
