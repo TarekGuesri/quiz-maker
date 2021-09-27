@@ -31,13 +31,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface QuestionOption {
+interface QuestionAnswer {
   id: string;
   text: string;
 }
 interface Question {
   content: string;
-  options: [QuestionOption, QuestionOption, QuestionOption, QuestionOption];
+  answers: [QuestionAnswer, QuestionAnswer, QuestionAnswer, QuestionAnswer];
 }
 interface CreateQuizState {
   title: string;
@@ -54,7 +54,7 @@ const CreateQuiz: React.FC = ({}) => {
     questions: [
       {
         content: "",
-        options: [
+        answers: [
           { id: firstAnswerID, text: "" },
           { id: uuidv4(), text: "" },
           { id: uuidv4(), text: "" },
@@ -116,7 +116,7 @@ const CreateQuiz: React.FC = ({}) => {
               value={selectedAnswer}
               onChange={handleSelectAnswer}
             >
-              {currentQuestion.options.map((question) => (
+              {currentQuestion.answers.map((question) => (
                 <FormControlLabel
                   key={question.id}
                   className={classes.formControlLabel}
