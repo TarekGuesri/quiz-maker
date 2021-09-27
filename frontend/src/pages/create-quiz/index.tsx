@@ -11,6 +11,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Pagination from "@mui/material/Pagination";
+import Button from "@mui/material/Button";
 import { CardBox } from "src/components/cards/card-box";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,6 +34,10 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+    },
+    button: {
+      width: "190px",
+      padding: "10px",
     },
   }),
 );
@@ -103,18 +108,30 @@ const CreateQuiz: React.FC = ({}) => {
       </Typography>
 
       <Grid container>
+        {/* Quiz Title */}
         <Grid item xs={12} mb={3}>
-          {/* Question */}
           <TextField
             id="outlined-basic"
-            label="Question"
+            label="Quiz's Title"
             variant="outlined"
             size="medium"
             fullWidth
           />
         </Grid>
+
+        {/* Question */}
+        <Grid item xs={12} mb={3}>
+          <TextField
+            id="outlined-basic"
+            label={`Question ${questionIndex + 1}`}
+            variant="outlined"
+            size="medium"
+            fullWidth
+          />
+        </Grid>
+
+        {/* Answers */}
         <Grid item xs={12} mb={2}>
-          {/* Answers */}
           <FormControl component="fieldset">
             <FormLabel className={classes.formLabel}>
               Answers
@@ -142,7 +159,8 @@ const CreateQuiz: React.FC = ({}) => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} alignContent="center">
+        {/* Pagination */}
+        <Grid item xs={12} mb={3}>
           <Pagination
             className={classes.pagination}
             count={questions.length}
@@ -150,6 +168,37 @@ const CreateQuiz: React.FC = ({}) => {
             color="primary"
             onChange={handleChangePage}
           />
+        </Grid>
+
+        {/* Buttons */}
+        <Grid container item xs={12} spacing={3} maxWidth={700} mx="auto">
+          <Grid item xs={12} md={4}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Remove Question
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+            >
+              Add a question
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+            >
+              Create Quiz
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </CardBox>
