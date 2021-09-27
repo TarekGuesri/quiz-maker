@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "190px",
       padding: "10px",
     },
+    buttonGridItem: {
+      paddingLeft: "0!important",
+    },
   }),
 );
 
@@ -146,13 +149,13 @@ const CreateQuiz: React.FC = ({}) => {
               value={selectedAnswer}
               onChange={handleSelectAnswer}
             >
-              {currentQuestion.answers.map((question) => (
+              {currentQuestion.answers.map((question, index) => (
                 <FormControlLabel
                   key={question.id}
                   className={classes.formControlLabel}
                   value={question.id}
                   control={<Radio />}
-                  label={<TextField />}
+                  label={<TextField label={`Answer ${index + 1} ...`} />}
                 />
               ))}
             </RadioGroup>
@@ -160,7 +163,7 @@ const CreateQuiz: React.FC = ({}) => {
         </Grid>
 
         {/* Pagination */}
-        <Grid item xs={12} mb={3}>
+        <Grid item xs={12} mb={4}>
           <Pagination
             className={classes.pagination}
             count={questions.length}
@@ -171,8 +174,16 @@ const CreateQuiz: React.FC = ({}) => {
         </Grid>
 
         {/* Buttons */}
-        <Grid container item xs={12} spacing={3} maxWidth={700} mx="auto">
-          <Grid item xs={12} md={4}>
+        <Grid
+          container
+          item
+          direction="row"
+          xs={12}
+          maxWidth={700}
+          mx="auto"
+          spacing={3}
+        >
+          <Grid item xs={12} md={4} className={classes.buttonGridItem}>
             <Button
               variant="contained"
               color="primary"
@@ -181,7 +192,7 @@ const CreateQuiz: React.FC = ({}) => {
               Remove Question
             </Button>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} className={classes.buttonGridItem}>
             <Button
               variant="contained"
               color="primary"
@@ -190,7 +201,7 @@ const CreateQuiz: React.FC = ({}) => {
               Add a question
             </Button>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} className={classes.buttonGridItem}>
             <Button
               variant="contained"
               color="secondary"
