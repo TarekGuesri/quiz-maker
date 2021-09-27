@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { createStyles, makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
 import Grid from "@mui/material/Grid";
@@ -16,6 +17,9 @@ const useStyles = makeStyles((theme: Theme) =>
     formLabel: {
       color: theme.palette.text.primary,
       fontSize: "1.2rem",
+      "&.Mui-focused": {
+        color: theme.palette.text.primary,
+      },
     },
     helperText: {
       color: theme.palette.text.secondary,
@@ -28,40 +32,56 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface QuestionOption {
+  id: string;
   text: string;
-  isCorrect: boolean;
 }
 interface Question {
   content: string;
   options: [QuestionOption, QuestionOption, QuestionOption, QuestionOption];
 }
 interface CreateQuizState {
+  title: string;
   questionIndex: number;
   questions: [Question];
 }
 
 const CreateQuiz: React.FC = ({}) => {
   const classes = useStyles();
+  const firstAnswerID = uuidv4();
   const [state, setState] = useState<CreateQuizState>({
+    title: "Test",
     questionIndex: 0,
     questions: [
       {
         content: "",
         options: [
-          { text: "", isCorrect: true },
-          { text: "", isCorrect: false },
-          { text: "", isCorrect: false },
-          { text: "", isCorrect: false },
+          { id: firstAnswerID, text: "" },
+          { id: uuidv4(), text: "" },
+          { id: uuidv4(), text: "" },
+          { id: uuidv4(), text: "" },
         ],
       },
     ],
   });
 
-  const [value, setValue] = React.useState("female");
+  const [selectedAnswers, setSelectedAnswers] = React.useState([firstAnswerID]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+  const handleSelectAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { questionIndex } = state;
+    const selectedAnswer = (event.target as HTMLInputElement).value;
+
+    const newSelectedAnswers = [...selectedAnswers];
+    newSelectedAnswers[questionIndex] = selectedAnswer;
+
+    setSelectedAnswers(newSelectedAnswers);
   };
+
+  const { questions, questionIndex } = state;
+
+  const currentQuestion = questions[questionIndex];
+
+  // We use this for selected answer's radio button
+  const selectedAnswer = selectedAnswers[questionIndex];
 
   return (
     <CardBox>
@@ -81,11 +101,10 @@ const CreateQuiz: React.FC = ({}) => {
           />
         </Grid>
         <Grid item xs={12}>
-          {" "}
           {/* Answers */}
           <FormControl component="fieldset">
             <FormLabel className={classes.formLabel}>
-              Answers{" "}
+              Answers
               <Typography className={classes.helperText}>
                 Check the correct answer
               </Typography>
@@ -94,9 +113,18 @@ const CreateQuiz: React.FC = ({}) => {
             <RadioGroup
               aria-label="gender"
               name="controlled-radio-buttons-group"
-              value={value}
-              onChange={handleChange}
+              value={selectedAnswer}
+              onChange={handleSelectAnswer}
             >
+              {currentQuestion.options.map((question) => (
+                <FormControlLabel
+                  key={question.id}
+                  className={classes.formControlLabel}
+                  value={question.id}
+                  control={<Radio />}
+                  label={<TextField />}
+                />
+              ))}
               <FormControlLabel
                 className={classes.formControlLabel}
                 value="female"
