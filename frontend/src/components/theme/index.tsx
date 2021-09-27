@@ -23,6 +23,10 @@ export const Theme: FC = (props) => {
       secondary: {
         main: "#f9de4a",
       },
+      text: {
+        primary: darkMode ? "#fff" : "#000",
+        secondary: darkMode ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.6)",
+      },
       contrastThreshold: 3,
       tonalOffset: 0.2,
     },
