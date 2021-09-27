@@ -10,6 +10,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import Pagination from "@mui/material/Pagination";
 import { CardBox } from "src/components/cards/card-box";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -27,6 +28,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     formControlLabel: {
       marginBottom: theme.spacing(2),
+    },
+    pagination: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
   }),
 );
@@ -76,6 +82,13 @@ const CreateQuiz: React.FC = ({}) => {
     setSelectedAnswers(newSelectedAnswers);
   };
 
+  const handleChangePage = (
+    _event: React.ChangeEvent<unknown>,
+    value: number,
+  ) => {
+    console.log(value);
+  };
+
   const { questions, questionIndex } = state;
 
   const currentQuestion = questions[questionIndex];
@@ -100,7 +113,7 @@ const CreateQuiz: React.FC = ({}) => {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} mb={2}>
           {/* Answers */}
           <FormControl component="fieldset">
             <FormLabel className={classes.formLabel}>
@@ -127,6 +140,16 @@ const CreateQuiz: React.FC = ({}) => {
               ))}
             </RadioGroup>
           </FormControl>
+        </Grid>
+
+        <Grid item xs={12} alignContent="center">
+          <Pagination
+            className={classes.pagination}
+            count={questions.length}
+            page={questionIndex + 1}
+            color="primary"
+            onChange={handleChangePage}
+          />
         </Grid>
       </Grid>
     </CardBox>
