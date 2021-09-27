@@ -103,11 +103,36 @@ const CreateQuiz: React.FC = ({}) => {
     setState({ ...state, title: value });
   };
 
+  const handleAddQuestion = () => {
+    const firstAnswerID = uuidv4();
+    const { questions, questionIndex } = state;
+
+    const newQuestions: Question[] = [
+      ...questions,
+      {
+        content: "",
+        answers: [
+          { id: firstAnswerID, text: "" },
+          { id: uuidv4(), text: "" },
+          { id: uuidv4(), text: "" },
+          { id: uuidv4(), text: "" },
+        ],
+      },
+    ];
+
+    setSelectedAnswers([...selectedAnswers, firstAnswerID]);
+    setState({
+      ...state,
+      questions: newQuestions,
+      questionIndex: questionIndex + 1,
+    });
+  };
+
   const handleChangeQuestion = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     const { questions, questionIndex } = state;
 
-    const newQuestions = [...questions];
+    const newQuestions: Question[] = [...questions];
     newQuestions[questionIndex].content = value;
 
     setState({ ...state, questions: [...newQuestions] });
@@ -215,6 +240,7 @@ const CreateQuiz: React.FC = ({}) => {
               variant="contained"
               color="primary"
               className={classes.button}
+              onClick={handleAddQuestion}
             >
               Add a question
             </Button>
