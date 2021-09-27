@@ -125,17 +125,6 @@ const CreateQuiz: React.FC = ({}) => {
                   label={<TextField />}
                 />
               ))}
-              <FormControlLabel
-                className={classes.formControlLabel}
-                value="female"
-                control={<Radio />}
-                label={<TextField />}
-              />
-              <FormControlLabel
-                value="male"
-                control={<Radio />}
-                label={<TextField />}
-              />
             </RadioGroup>
           </FormControl>
         </Grid>
