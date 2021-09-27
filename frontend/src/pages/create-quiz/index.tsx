@@ -56,14 +56,14 @@ interface Question {
 interface CreateQuizState {
   title: string;
   questionIndex: number;
-  questions: [Question];
+  questions: Question[];
 }
 
 const CreateQuiz: React.FC = ({}) => {
   const classes = useStyles();
   const firstAnswerID = uuidv4();
   const [state, setState] = useState<CreateQuizState>({
-    title: "Test",
+    title: "",
     questionIndex: 0,
     questions: [
       {
@@ -97,7 +97,23 @@ const CreateQuiz: React.FC = ({}) => {
     console.log(value);
   };
 
-  const { questions, questionIndex } = state;
+  const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    setState({ ...state, title: value });
+  };
+
+  const handleChangeQuestion = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    const { questions, questionIndex } = state;
+
+    const newQuestions = [...questions];
+    newQuestions[questionIndex].content = value;
+
+    setState({ ...state, questions: [...newQuestions] });
+  };
+
+  const { title, questions, questionIndex } = state;
 
   const currentQuestion = questions[questionIndex];
 
@@ -114,8 +130,9 @@ const CreateQuiz: React.FC = ({}) => {
         {/* Quiz Title */}
         <Grid item xs={12} mb={3}>
           <TextField
-            id="outlined-basic"
-            label="Quiz's Title"
+            value={title}
+            onChange={handleChangeTitle}
+            label="Quiz Title"
             variant="outlined"
             size="medium"
             fullWidth
@@ -125,7 +142,8 @@ const CreateQuiz: React.FC = ({}) => {
         {/* Question */}
         <Grid item xs={12} mb={3}>
           <TextField
-            id="outlined-basic"
+            value={currentQuestion.content}
+            onChange={handleChangeQuestion}
             label={`Question ${questionIndex + 1}`}
             variant="outlined"
             size="medium"
