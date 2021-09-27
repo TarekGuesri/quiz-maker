@@ -21,7 +21,7 @@ export const Theme: FC = (props) => {
         // contrastText:
       },
       secondary: {
-        main: "#f9de4a",
+        main: "#ffc107",
       },
       text: {
         primary: darkMode ? "#fff" : "#000",
