@@ -18,6 +18,7 @@ import {
   addQuestion,
   changeTitle,
   changeQuestion,
+  changePage,
 } from "src/redux/create-quiz/create-quiz-slice";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -109,6 +110,7 @@ const CreateQuiz: React.FC = ({}) => {
     value: number,
   ) => {
     if (value) {
+      dispatch(changePage(value - 1));
       setState({ ...state, questionIndex: value - 1 });
     }
   };
