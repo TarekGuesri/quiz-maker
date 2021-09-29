@@ -64,7 +64,7 @@ export const createQuizSlice = createSlice({
       state.selectedAnswers.push(firstAnswerID);
 
       // Changing index
-      state.questionIndex++;
+      state.questionIndex = current(state.questions).length - 1;
     },
     removeQuestion: (state) => {
       // We remove the selected answer from the target question
