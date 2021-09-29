@@ -1,0 +1,49 @@
+import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
+
+interface QuestionAnswer {
+  id: string;
+  text: string;
+}
+interface Question {
+  id: string;
+  content: string;
+  answers: [QuestionAnswer, QuestionAnswer, QuestionAnswer, QuestionAnswer];
+}
+interface CreateQuizState {
+  title: string;
+  questionIndex: number;
+  questions: Question[];
+  selectedAnswers: string[];
+}
+
+const firstAnswerID = uuidv4();
+
+const initialState: CreateQuizState = {
+  title: "",
+  questionIndex: 0,
+  questions: [
+    {
+      id: uuidv4(),
+      content: "",
+      answers: [
+        { id: firstAnswerID, text: "" },
+        { id: uuidv4(), text: "" },
+        { id: uuidv4(), text: "" },
+        { id: uuidv4(), text: "" },
+      ],
+    },
+  ],
+  selectedAnswers: [firstAnswerID],
+};
+
+export const createQuizSlice = createSlice({
+  name: "create-quiz",
+  initialState,
+  // The `reducers` field lets us define reducers and generate associated actions
+  reducers: {},
+});
+
+// export const { switchDarkMode } = createQuizSlice.actions;
+
+export default createQuizSlice.reducer;

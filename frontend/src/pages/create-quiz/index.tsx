@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "src/redux/hooks";
 import { v4 as uuidv4 } from "uuid";
 import { createStyles, makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
@@ -63,6 +64,10 @@ interface CreateQuizState {
 const CreateQuiz: React.FC = ({}) => {
   const classes = useStyles();
   const firstAnswerID = uuidv4();
+  const dispatch = useAppDispatch();
+  const { title, questionIndex, questions, selectedAnswers } = useAppSelector(
+    (state) => state.createQuiz,
+  );
   const [state, setState] = useState<CreateQuizState>({
     title: "",
     questionIndex: 0,
@@ -80,7 +85,9 @@ const CreateQuiz: React.FC = ({}) => {
     ],
   });
 
-  const [selectedAnswers, setSelectedAnswers] = React.useState([firstAnswerID]);
+  const [selectedAnswerss, setSelectedAnswers] = React.useState([
+    firstAnswerID,
+  ]);
 
   const handleSelectAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { questionIndex } = state;
@@ -185,8 +192,6 @@ const CreateQuiz: React.FC = ({}) => {
 
     setState({ ...state, questions: [...newQuestions] });
   };
-
-  const { title, questions, questionIndex } = state;
 
   const currentQuestion = questions[questionIndex];
 
