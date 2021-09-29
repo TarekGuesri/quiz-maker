@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAppDispatch, useAppSelector } from "src/redux/hooks";
-import { v4 as uuidv4 } from "uuid";
 import { createStyles, makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
 import Grid from "@mui/material/Grid";
@@ -20,6 +19,7 @@ import {
   changePage,
   changeTitle,
   changeQuestion,
+  removeQuestion,
   setSelectedAnswer,
 } from "src/redux/create-quiz/create-quiz-slice";
 
@@ -54,48 +54,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface QuestionAnswer {
-  id: string;
-  text: string;
-}
-interface Question {
-  id: string;
-  content: string;
-  answers: [QuestionAnswer, QuestionAnswer, QuestionAnswer, QuestionAnswer];
-}
-interface CreateQuizState {
-  title: string;
-  questionIndex: number;
-  questions: Question[];
-}
-
 const CreateQuiz: React.FC = ({}) => {
   const classes = useStyles();
-  const firstAnswerID = uuidv4();
   const dispatch = useAppDispatch();
   const { title, questionIndex, questions, selectedAnswers } = useAppSelector(
     (state) => state.createQuiz,
   );
-  const [state, setState] = useState<CreateQuizState>({
-    title: "",
-    questionIndex: 0,
-    questions: [
-      {
-        id: uuidv4(),
-        content: "",
-        answers: [
-          { id: firstAnswerID, text: "" },
-          { id: uuidv4(), text: "" },
-          { id: uuidv4(), text: "" },
-          { id: uuidv4(), text: "" },
-        ],
-      },
-    ],
-  });
-
-  const [selectedAnswerss, setSelectedAnswers] = React.useState([
-    firstAnswerID,
-  ]);
 
   const handleSelectAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedAnswer = (event.target as HTMLInputElement).value;
@@ -116,34 +80,6 @@ const CreateQuiz: React.FC = ({}) => {
     const value = event.target.value;
 
     dispatch(changeTitle(value));
-  };
-
-  const handleRemoveQuestion = () => {
-    const { questions, questionIndex } = state;
-
-    const newQuestions: Question[] = [
-      ...questions.filter(
-        (question) => question.id !== questions[questionIndex].id,
-      ),
-    ];
-
-    console.log(selectedAnswers);
-
-    // Removing the selected answer of the removed question
-    setSelectedAnswers([
-      ...selectedAnswers.filter(
-        (answer) => answer !== selectedAnswers[questionIndex],
-      ),
-    ]);
-
-    setState({
-      ...state,
-      questions: newQuestions,
-      questionIndex:
-        questionIndex === newQuestions.length
-          ? questionIndex - 1
-          : questionIndex,
-    });
   };
 
   const handleChangeQuestion = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -256,7 +192,7 @@ const CreateQuiz: React.FC = ({}) => {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleRemoveQuestion}
+              onClick={() => dispatch(removeQuestion())}
               disabled={questions.length < 2}
             >
               Remove Question

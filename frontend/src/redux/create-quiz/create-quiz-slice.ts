@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 interface ChangeAnswer {
@@ -66,6 +66,20 @@ export const createQuizSlice = createSlice({
       // Changing index
       state.questionIndex++;
     },
+    removeQuestion: (state) => {
+      // We remove the selected answer from the target question
+      const currentIndex = state.questionIndex;
+      state.selectedAnswers.splice(currentIndex, 1);
+
+      // We remove the question
+      state.questions.splice(currentIndex, 1);
+
+      // We change the index
+      const newQuestionsLength = current(state.questions).length;
+
+      state.questionIndex =
+        currentIndex === newQuestionsLength ? currentIndex - 1 : currentIndex;
+    },
     changeTitle: (state, action: PayloadAction<string>) => {
       state.title = action.payload;
     },
@@ -98,6 +112,7 @@ export const {
   changeTitle,
   changePage,
   changeQuestion,
+  removeQuestion,
   setSelectedAnswer,
 } = createQuizSlice.actions;
 
