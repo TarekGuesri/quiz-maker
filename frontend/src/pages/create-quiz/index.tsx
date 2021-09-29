@@ -16,9 +16,10 @@ import Button from "@mui/material/Button";
 import { CardBox } from "src/components/cards/card-box";
 import {
   addQuestion,
+  changeAnswer,
+  changePage,
   changeTitle,
   changeQuestion,
-  changePage,
   setSelectedAnswer,
 } from "src/redux/create-quiz/create-quiz-slice";
 
@@ -153,16 +154,8 @@ const CreateQuiz: React.FC = ({}) => {
 
   const handleChangeAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
-    const { questions, questionIndex } = state;
 
-    const answerIndex = questions[questionIndex].answers.findIndex(
-      (answer) => answer.id === name,
-    );
-
-    const newQuestions: Question[] = [...questions];
-    newQuestions[questionIndex].answers[answerIndex].text = value;
-
-    setState({ ...state, questions: [...newQuestions] });
+    dispatch(changeAnswer({ name, value }));
   };
 
   const currentQuestion = questions[questionIndex];

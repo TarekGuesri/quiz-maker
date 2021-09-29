@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
+interface ChangeAnswer {
+  name: string;
+  value: string;
+}
 interface QuestionAnswer {
   id: string;
   text: string;
@@ -68,6 +72,17 @@ export const createQuizSlice = createSlice({
     changeQuestion: (state, action: PayloadAction<string>) => {
       state.questions[state.questionIndex].content = action.payload;
     },
+    changeAnswer: (state, action: PayloadAction<ChangeAnswer>) => {
+      const { value, name } = action.payload;
+
+      // We get the answer's index
+      const answerIndex = state.questions[
+        state.questionIndex
+      ].answers.findIndex((answer) => answer.id === name);
+
+      // We change the answer's text
+      state.questions[state.questionIndex].answers[answerIndex].text = value;
+    },
     changePage: (state, action: PayloadAction<number>) => {
       state.questionIndex = action.payload;
     },
@@ -79,6 +94,7 @@ export const createQuizSlice = createSlice({
 
 export const {
   addQuestion,
+  changeAnswer,
   changeTitle,
   changePage,
   changeQuestion,
