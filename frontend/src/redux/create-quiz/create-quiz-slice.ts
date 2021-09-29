@@ -62,12 +62,12 @@ export const createQuizSlice = createSlice({
       // Changing index
       state.questionIndex++;
     },
-    addSelectedAnswer: (state, action: PayloadAction<string>) => {
-      state.selectedAnswers.push(action.payload);
+    changeTitle: (state, action: PayloadAction<string>) => {
+      state.title = action.payload;
     },
   },
 });
 
-export const { addQuestion, addSelectedAnswer } = createQuizSlice.actions;
+export const { addQuestion, changeTitle } = createQuizSlice.actions;
 
 export default createQuizSlice.reducer;

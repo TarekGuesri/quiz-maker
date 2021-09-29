@@ -14,7 +14,10 @@ import FormLabel from "@mui/material/FormLabel";
 import Pagination from "@mui/material/Pagination";
 import Button from "@mui/material/Button";
 import { CardBox } from "src/components/cards/card-box";
-import { addQuestion } from "src/redux/create-quiz/create-quiz-slice";
+import {
+  addQuestion,
+  changeTitle,
+} from "src/redux/create-quiz/create-quiz-slice";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -112,7 +115,7 @@ const CreateQuiz: React.FC = ({}) => {
   const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
-    setState({ ...state, title: value });
+    dispatch(changeTitle(value));
   };
 
   const handleRemoveQuestion = () => {
