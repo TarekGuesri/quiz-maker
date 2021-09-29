@@ -50,6 +50,7 @@ interface QuestionAnswer {
   text: string;
 }
 interface Question {
+  id: string;
   content: string;
   answers: [QuestionAnswer, QuestionAnswer, QuestionAnswer, QuestionAnswer];
 }
@@ -67,6 +68,7 @@ const CreateQuiz: React.FC = ({}) => {
     questionIndex: 0,
     questions: [
       {
+        id: uuidv4(),
         content: "",
         answers: [
           { id: firstAnswerID, text: "" },
@@ -112,6 +114,7 @@ const CreateQuiz: React.FC = ({}) => {
     const newQuestions: Question[] = [
       ...questions,
       {
+        id: uuidv4(),
         content: "",
         answers: [
           { id: firstAnswerID, text: "" },
@@ -123,10 +126,39 @@ const CreateQuiz: React.FC = ({}) => {
     ];
 
     setSelectedAnswers([...selectedAnswers, firstAnswerID]);
+
     setState({
       ...state,
       questions: newQuestions,
       questionIndex: newQuestions.length - 1,
+    });
+  };
+
+  const handleRemoveQuestion = () => {
+    const { questions, questionIndex } = state;
+
+    const newQuestions: Question[] = [
+      ...questions.filter(
+        (question) => question.id !== questions[questionIndex].id,
+      ),
+    ];
+
+    console.log(selectedAnswers);
+
+    // Removing the selected answer of the removed question
+    setSelectedAnswers([
+      ...selectedAnswers.filter(
+        (answer) => answer !== selectedAnswers[questionIndex],
+      ),
+    ]);
+
+    setState({
+      ...state,
+      questions: newQuestions,
+      questionIndex:
+        questionIndex === newQuestions.length
+          ? questionIndex - 1
+          : questionIndex,
     });
   };
 
@@ -208,17 +240,17 @@ const CreateQuiz: React.FC = ({}) => {
               value={selectedAnswer}
               onChange={handleSelectAnswer}
             >
-              {currentQuestion.answers.map((question, index) => (
+              {currentQuestion.answers.map((answer, index) => (
                 <FormControlLabel
-                  key={question.id}
+                  key={answer.id}
                   className={classes.formControlLabel}
-                  value={question.id}
+                  value={answer.id}
                   control={<Radio />}
                   label={
                     <TextField
                       label={`Answer ${index + 1} ...`}
-                      name={question.id}
-                      value={question.text}
+                      name={answer.id}
+                      value={answer.text}
                       onChange={handleChangeAnswer}
                     />
                   }
@@ -254,6 +286,8 @@ const CreateQuiz: React.FC = ({}) => {
               variant="contained"
               color="primary"
               className={classes.button}
+              onClick={handleRemoveQuestion}
+              disabled={questions.length < 2}
             >
               Remove Question
             </Button>
@@ -264,6 +298,7 @@ const CreateQuiz: React.FC = ({}) => {
               color="primary"
               className={classes.button}
               onClick={handleAddQuestion}
+              disabled={questions.length >= 10}
             >
               Add a question
             </Button>
