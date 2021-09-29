@@ -14,6 +14,7 @@ import FormLabel from "@mui/material/FormLabel";
 import Pagination from "@mui/material/Pagination";
 import Button from "@mui/material/Button";
 import { CardBox } from "src/components/cards/card-box";
+import { addQuestion } from "src/redux/create-quiz/create-quiz-slice";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -112,33 +113,6 @@ const CreateQuiz: React.FC = ({}) => {
     const value = event.target.value;
 
     setState({ ...state, title: value });
-  };
-
-  const handleAddQuestion = () => {
-    const firstAnswerID = uuidv4();
-    const { questions } = state;
-
-    const newQuestions: Question[] = [
-      ...questions,
-      {
-        id: uuidv4(),
-        content: "",
-        answers: [
-          { id: firstAnswerID, text: "" },
-          { id: uuidv4(), text: "" },
-          { id: uuidv4(), text: "" },
-          { id: uuidv4(), text: "" },
-        ],
-      },
-    ];
-
-    setSelectedAnswers([...selectedAnswers, firstAnswerID]);
-
-    setState({
-      ...state,
-      questions: newQuestions,
-      questionIndex: newQuestions.length - 1,
-    });
   };
 
   const handleRemoveQuestion = () => {
@@ -302,7 +276,7 @@ const CreateQuiz: React.FC = ({}) => {
               variant="contained"
               color="primary"
               className={classes.button}
-              onClick={handleAddQuestion}
+              onClick={() => dispatch(addQuestion())}
               disabled={questions.length >= 10}
             >
               Add a question

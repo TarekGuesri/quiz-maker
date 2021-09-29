@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 interface QuestionAnswer {
@@ -40,10 +40,34 @@ const initialState: CreateQuizState = {
 export const createQuizSlice = createSlice({
   name: "create-quiz",
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
-  reducers: {},
+  reducers: {
+    addQuestion: (state) => {
+      const firstAnswerID = uuidv4();
+
+      // Adding the question
+      state.questions.push({
+        id: uuidv4(),
+        content: "",
+        answers: [
+          { id: firstAnswerID, text: "" },
+          { id: uuidv4(), text: "" },
+          { id: uuidv4(), text: "" },
+          { id: uuidv4(), text: "" },
+        ],
+      });
+
+      // Adding new selected answer
+      state.selectedAnswers.push(firstAnswerID);
+
+      // Changing index
+      state.questionIndex++;
+    },
+    addSelectedAnswer: (state, action: PayloadAction<string>) => {
+      state.selectedAnswers.push(action.payload);
+    },
+  },
 });
 
-// export const { switchDarkMode } = createQuizSlice.actions;
+export const { addQuestion, addSelectedAnswer } = createQuizSlice.actions;
 
 export default createQuizSlice.reducer;
