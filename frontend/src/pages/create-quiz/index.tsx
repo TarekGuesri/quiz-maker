@@ -17,6 +17,7 @@ import { CardBox } from "src/components/cards/card-box";
 import {
   addQuestion,
   changeTitle,
+  changeQuestion,
 } from "src/redux/create-quiz/create-quiz-slice";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -148,12 +149,8 @@ const CreateQuiz: React.FC = ({}) => {
 
   const handleChangeQuestion = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    const { questions, questionIndex } = state;
 
-    const newQuestions: Question[] = [...questions];
-    newQuestions[questionIndex].content = value;
-
-    setState({ ...state, questions: [...newQuestions] });
+    dispatch(changeQuestion(value));
   };
 
   const handleChangeAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
