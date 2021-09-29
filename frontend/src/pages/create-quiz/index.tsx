@@ -19,6 +19,7 @@ import {
   changeTitle,
   changeQuestion,
   changePage,
+  setSelectedAnswer,
 } from "src/redux/create-quiz/create-quiz-slice";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -96,13 +97,9 @@ const CreateQuiz: React.FC = ({}) => {
   ]);
 
   const handleSelectAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { questionIndex } = state;
     const selectedAnswer = (event.target as HTMLInputElement).value;
 
-    const newSelectedAnswers = [...selectedAnswers];
-    newSelectedAnswers[questionIndex] = selectedAnswer;
-
-    setSelectedAnswers(newSelectedAnswers);
+    dispatch(setSelectedAnswer(selectedAnswer));
   };
 
   const handleChangePage = (
@@ -111,7 +108,6 @@ const CreateQuiz: React.FC = ({}) => {
   ) => {
     if (value) {
       dispatch(changePage(value - 1));
-      setState({ ...state, questionIndex: value - 1 });
     }
   };
 
