@@ -140,6 +140,20 @@ const CreateQuiz: React.FC = ({}) => {
     setState({ ...state, questions: [...newQuestions] });
   };
 
+  const handleChangeAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = event.target;
+    const { questions, questionIndex } = state;
+
+    const answerIndex = questions[questionIndex].answers.findIndex(
+      (answer) => answer.id === name,
+    );
+
+    const newQuestions: Question[] = [...questions];
+    newQuestions[questionIndex].answers[answerIndex].text = value;
+
+    setState({ ...state, questions: [...newQuestions] });
+  };
+
   const { title, questions, questionIndex } = state;
 
   const currentQuestion = questions[questionIndex];
@@ -200,7 +214,14 @@ const CreateQuiz: React.FC = ({}) => {
                   className={classes.formControlLabel}
                   value={question.id}
                   control={<Radio />}
-                  label={<TextField label={`Answer ${index + 1} ...`} />}
+                  label={
+                    <TextField
+                      label={`Answer ${index + 1} ...`}
+                      name={question.id}
+                      value={question.text}
+                      onChange={handleChangeAnswer}
+                    />
+                  }
                 />
               ))}
             </RadioGroup>
