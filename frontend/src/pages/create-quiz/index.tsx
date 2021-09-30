@@ -12,6 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Pagination from "@mui/material/Pagination";
 import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
 import { CardBox } from "src/components/cards/card-box";
 import {
   addQuestion,
@@ -199,15 +200,19 @@ const CreateQuiz: React.FC = ({}) => {
             </Button>
           </Grid>
           <Grid item xs={12} md={4} className={classes.buttonGridItem}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              onClick={() => dispatch(addQuestion())}
-              disabled={questions.length >= 10}
-            >
-              Add a question
-            </Button>
+            <Tooltip title="You can only have 10 questions max per quiz">
+              <div>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  onClick={() => dispatch(addQuestion())}
+                  disabled={questions.length >= 10}
+                >
+                  Add a question
+                </Button>
+              </div>
+            </Tooltip>
           </Grid>
           <Grid item xs={12} md={4} className={classes.buttonGridItem}>
             <Button
