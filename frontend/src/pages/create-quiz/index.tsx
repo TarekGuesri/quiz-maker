@@ -155,7 +155,7 @@ const CreateQuiz: React.FC = ({}) => {
                   control={<Radio />}
                   label={
                     <TextField
-                      label={`Answer ${index + 1} ...`}
+                      label={`Answer ${index + 1}...`}
                       name={answer.id}
                       value={answer.text}
                       onChange={handleChangeAnswer}
