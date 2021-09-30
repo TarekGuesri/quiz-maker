@@ -18,9 +18,10 @@ import { CardBox } from "src/components/cards/card-box";
 import {
   addQuestion,
   changeAnswer,
-  changePage,
   changeTitle,
+  changePage,
   changeQuestion,
+  validateForm,
   removeQuestion,
   setSelectedAnswer,
 } from "src/redux/create-quiz/create-quiz-slice";
@@ -227,6 +228,7 @@ const CreateQuiz: React.FC = ({}) => {
               variant="contained"
               color="secondary"
               className={classes.button}
+              onClick={() => dispatch(validateForm())}
             >
               Create Quiz
             </Button>

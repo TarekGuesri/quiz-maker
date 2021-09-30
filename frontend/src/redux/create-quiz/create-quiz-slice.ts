@@ -105,6 +105,48 @@ export const createQuizSlice = createSlice({
     setSelectedAnswer: (state, action: PayloadAction<string>) => {
       state.selectedAnswers[state.questionIndex] = action.payload;
     },
+    validateForm: (state) => {
+      // We clear errors
+      state.errorMessage = "";
+
+      // Then we validate the form
+      const { title, questions } = current(state);
+
+      // Validating the title
+      if (!title) {
+        state.errorMessage = "Quiz title can't be empty";
+        return;
+      }
+
+      // Validating questions
+      const nonValidQuestions: number[] = [];
+
+      questions.forEach((question, index) => {
+        const { content, answers } = question;
+        // We validate the question's content
+        if (!content) {
+          nonValidQuestions.push(index + 1);
+          return;
+        }
+
+        // Validating question's answers
+        for (let i = 0; i < answers.length; i++) {
+          const answer = answers[i];
+
+          if (!answer.text) {
+            nonValidQuestions.push(index + 1);
+            return;
+          }
+        }
+      });
+
+      if (nonValidQuestions.length > 0) {
+        state.errorMessage = `Please fill in all the fields of the questions "${nonValidQuestions.join(
+          ", ",
+        )}"`;
+        return;
+      }
+    },
   },
 });
 
@@ -114,6 +156,7 @@ export const {
   changeTitle,
   changePage,
   changeQuestion,
+  validateForm,
   removeQuestion,
   setSelectedAnswer,
 } = createQuizSlice.actions;
