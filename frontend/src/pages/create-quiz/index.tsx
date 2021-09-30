@@ -2,6 +2,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "src/redux/hooks";
 import { createStyles, makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
+import Alert from "@mui/material/Alert";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -58,9 +59,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const CreateQuiz: React.FC = ({}) => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
-  const { title, questionIndex, questions, selectedAnswers } = useAppSelector(
-    (state) => state.createQuiz,
-  );
+  const { title, questionIndex, questions, selectedAnswers, errorMessage } =
+    useAppSelector((state) => state.createQuiz);
 
   const handleSelectAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedAnswer = (event.target as HTMLInputElement).value;
@@ -178,6 +178,14 @@ const CreateQuiz: React.FC = ({}) => {
           />
         </Grid>
 
+        {/* Error Message */}
+        {errorMessage && (
+          <Grid item xs={12} mb={4}>
+            <Alert variant="filled" severity="error">
+              {errorMessage}
+            </Alert>
+          </Grid>
+        )}
         {/* Buttons */}
         <Grid
           container

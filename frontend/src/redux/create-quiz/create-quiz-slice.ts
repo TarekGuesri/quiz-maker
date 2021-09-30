@@ -19,6 +19,7 @@ interface CreateQuizState {
   questionIndex: number;
   questions: Question[];
   selectedAnswers: string[];
+  errorMessage: string;
 }
 
 const firstAnswerID = uuidv4();
@@ -39,6 +40,7 @@ const initialState: CreateQuizState = {
     },
   ],
   selectedAnswers: [firstAnswerID],
+  errorMessage: "",
 };
 
 export const createQuizSlice = createSlice({
