@@ -17,7 +17,7 @@ interface Question {
 interface CreateQuizState {
   title: string;
   questionIndex: number;
-  questions: Question[];
+  questions: Array<Question>;
   selectedAnswers: string[];
   errorMessage: string;
 }
