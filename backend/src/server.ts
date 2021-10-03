@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import colors from "colors";
 import helmet from "helmet";
+import hpp from "hpp";
 import rateLimit from "express-rate-limit";
 
 import restRoute from "./routes/rest";
@@ -19,13 +20,14 @@ app.use(cors());
 // Enabling helmet
 app.use(helmet());
 
+// Prevent http param pollution
+app.use(hpp());
+
 // Limiting each IP to 100 requests per windowMs
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100,
 });
-
-//  apply to all requests
 app.use(limiter);
 
 // body parsing middleware
