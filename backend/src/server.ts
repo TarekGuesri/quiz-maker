@@ -6,11 +6,17 @@ import colors from "colors";
 import helmet from "helmet";
 import hpp from "hpp";
 import rateLimit from "express-rate-limit";
+import mongoSanitize from "express-rate-limit";
+
+import { connectDB } from "./config/db";
 
 import restRoute from "./routes/rest";
 
 // Load env vars
 dotenv.config();
+
+// Connect to database
+connectDB();
 
 const app = express();
 
@@ -29,6 +35,9 @@ const limiter = rateLimit({
   max: 100,
 });
 app.use(limiter);
+
+// Sanitize data
+app.use(mongoSanitize());
 
 // body parsing middleware
 app.use(express.json());
