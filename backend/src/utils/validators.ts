@@ -5,6 +5,7 @@ export const quizSchema: Schema = {
   title: {
     errorMessage: "Title can't be empty!",
     notEmpty: true,
+    escape: true,
   },
   questions: {
     isArray: { options: { min: 1, max: 10 } },
@@ -18,6 +19,7 @@ export const quizSchema: Schema = {
       },
     },
     notEmpty: true,
+    escape: true,
   },
   "questions.*.answers": {
     isArray: { options: { min: 4, max: 4 } },
@@ -44,5 +46,6 @@ export const quizSchema: Schema = {
       },
     },
     notEmpty: true,
+    escape: true,
   },
 };
