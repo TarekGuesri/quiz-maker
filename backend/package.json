@@ -20,6 +20,7 @@
     "@types/hpp": "^0.2.2",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.9.2",
+    "@types/shortid": "^0.0.29",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "eslint": "^7.32.0",
@@ -38,6 +39,7 @@
     "helmet": "^4.6.0",
     "hpp": "^0.2.3",
     "mongoose": "^6.0.8",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "shortid": "^2.2.16"
   }
 }

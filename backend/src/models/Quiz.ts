@@ -3,6 +3,7 @@ import { QuestionDocument } from "./Question";
 
 export type QuizDocument = Document & {
   title: string;
+  code: string;
   questions: QuestionDocument["_id"];
 };
 
@@ -13,6 +14,12 @@ const QuizSchema: Schema = new Schema<QuizDocument>(
       required: [true, "Please add a title!"],
       trim: true,
       maxlength: [50, "Title can not be more than 50 characters"],
+    },
+    code: {
+      type: String,
+      required: [true, "Please add a code!"],
+      trim: true,
+      maxlength: [20, "Code can not be more than 20 characters"],
     },
     questions: {
       type: [{ type: Schema.Types.ObjectId, ref: "Question" }],
