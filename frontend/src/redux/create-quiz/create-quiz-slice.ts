@@ -1,28 +1,7 @@
 import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import { AppThunk, RootState } from "src/redux/store";
-
-interface ChangeAnswer {
-  name: string;
-  value: string;
-}
-interface QuestionAnswer {
-  id: string;
-  text: string;
-}
-interface Question {
-  id: string;
-  content: string;
-  answers: [QuestionAnswer, QuestionAnswer, QuestionAnswer, QuestionAnswer];
-}
-interface CreateQuizState {
-  title: string;
-  questionIndex: number;
-  questions: Array<Question>;
-  selectedAnswers: Array<string>;
-  isValid: boolean;
-  errorMessage: string;
-}
+import { CreateQuizState, ChangeAnswer } from "src/types";
 
 const firstAnswerID = uuidv4();
 

@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export interface UIState {
-  darkMode: boolean;
-}
+import { UIState } from "src/types";
 
 const initialState: UIState = {
   darkMode: localStorage.getItem("darkMode") === "on",
