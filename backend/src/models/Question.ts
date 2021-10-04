@@ -1,9 +1,9 @@
 import { model, Schema, Document } from "mongoose";
-import Answer, { AnswerDocument } from "./Answer";
+import { AnswerDocument } from "./Answer";
 
 export type QuestionDocument = Document & {
   content: string;
-  answers: Array<AnswerDocument>;
+  answers: AnswerDocument["_id"];
 };
 
 const QuestionSchema: Schema = new Schema<QuestionDocument>({
@@ -15,7 +15,7 @@ const QuestionSchema: Schema = new Schema<QuestionDocument>({
     maxlength: [50, "Content can not be more than 50 characters"],
   },
   answers: {
-    type: [Answer.schema],
+    type: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
     validate: {
       validator: (value: Array<AnswerDocument>) => {
         return value && value.length === 4;
