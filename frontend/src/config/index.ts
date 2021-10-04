@@ -15,6 +15,6 @@ const e = environments.indexOf(getEnv());
 
 export const config = {
   api: {
-    url: [`http://localhost:3000`, "http://localhost:3000"][e],
+    url: [`http://localhost:5000`, "http://localhost:5000"][e],
   },
 };
