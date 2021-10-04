@@ -21,7 +21,7 @@ import {
   changeTitle,
   changePage,
   changeQuestion,
-  validateForm,
+  createQuiz,
   removeQuestion,
   setSelectedAnswer,
 } from "src/redux/create-quiz/create-quiz-slice";
@@ -228,7 +228,7 @@ const CreateQuiz: React.FC = ({}) => {
               variant="contained"
               color="secondary"
               className={classes.button}
-              onClick={() => dispatch(validateForm())}
+              onClick={() => dispatch(createQuiz())}
             >
               Create Quiz
             </Button>

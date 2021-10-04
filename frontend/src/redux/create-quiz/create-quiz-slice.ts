@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import { AppThunk, RootState } from "src/redux/store";
 
 interface ChangeAnswer {
   name: string;
@@ -19,6 +20,7 @@ interface CreateQuizState {
   questionIndex: number;
   questions: Array<Question>;
   selectedAnswers: Array<string>;
+  isValid: boolean;
   errorMessage: string;
 }
 
@@ -40,6 +42,7 @@ const initialState: CreateQuizState = {
     },
   ],
   selectedAnswers: [firstAnswerID],
+  isValid: false,
   errorMessage: "",
 };
 
@@ -145,6 +148,8 @@ export const createQuizSlice = createSlice({
           ", ",
         )}"`;
         return;
+      } else {
+        state.isValid = true;
       }
     },
   },
@@ -160,5 +165,17 @@ export const {
   removeQuestion,
   setSelectedAnswer,
 } = createQuizSlice.actions;
+
+export const selectIsValid = (state: RootState) => state.createQuiz.isValid;
+
+export const createQuiz = (): AppThunk => (dispatch, getState) => {
+  dispatch(validateForm());
+
+  const isValid = selectIsValid(getState());
+
+  if (isValid) {
+    console.log("Send API Request");
+  }
+};
 
 export default createQuizSlice.reducer;
