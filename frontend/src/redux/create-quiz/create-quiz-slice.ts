@@ -1,3 +1,4 @@
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import { AppThunk, RootState } from "src/redux/store";
@@ -6,21 +7,22 @@ import { CreateQuizState, ChangeAnswer } from "src/types";
 const firstAnswerID = uuidv4();
 
 const initialState: CreateQuizState = {
-  title: "",
+  title: "aaaa",
   questionIndex: 0,
   questions: [
     {
       id: uuidv4(),
-      content: "",
+      content: "bbbb",
       answers: [
-        { id: firstAnswerID, text: "" },
-        { id: uuidv4(), text: "" },
-        { id: uuidv4(), text: "" },
-        { id: uuidv4(), text: "" },
+        { id: firstAnswerID, text: "1111" },
+        { id: uuidv4(), text: "222" },
+        { id: uuidv4(), text: "333" },
+        { id: uuidv4(), text: "4444" },
       ],
     },
   ],
   selectedAnswers: [firstAnswerID],
+  isLoading: false,
   isValid: false,
   errorMessage: "",
 };
@@ -97,6 +99,7 @@ export const createQuizSlice = createSlice({
       // Validating the title
       if (!title) {
         state.errorMessage = "Quiz title can't be empty";
+        state.isValid = false;
         return;
       }
 
@@ -126,10 +129,24 @@ export const createQuizSlice = createSlice({
         state.errorMessage = `Please fill in all the fields of the questions "${nonValidQuestions.join(
           ", ",
         )}"`;
+        state.isValid = false;
         return;
       } else {
         state.isValid = true;
       }
+    },
+    setLoading: (state) => {
+      state.isLoading = true;
+    },
+    createQuizSuccess: (state, action: PayloadAction<string>) => {
+      console.log(action.payload);
+
+      state.errorMessage = "";
+      state.isLoading = false;
+    },
+    createQuizFail: (state, action: PayloadAction<string>) => {
+      state.errorMessage = action.payload;
+      state.isLoading = false;
     },
   },
 });
@@ -143,17 +160,40 @@ export const {
   validateForm,
   removeQuestion,
   setSelectedAnswer,
+  setLoading,
+  createQuizSuccess,
+  createQuizFail,
 } = createQuizSlice.actions;
 
-export const selectIsValid = (state: RootState) => state.createQuiz.isValid;
+export const selectCeateQuiz = (state: RootState) => state.createQuiz;
 
-export const createQuiz = (): AppThunk => (dispatch, getState) => {
+export const createQuiz = (): AppThunk => async (dispatch, getState) => {
   dispatch(validateForm());
 
-  const isValid = selectIsValid(getState());
+  const { title, questions, selectedAnswers, isValid } = selectCeateQuiz(
+    getState(),
+  );
 
+  // If the form is valid, we send a request to the api
   if (isValid) {
-    console.log("Send API Request");
+    dispatch(setLoading());
+
+    try {
+      const res: AxiosResponse = await axios.post("quizzes", {
+        title,
+        questions,
+        selectedAnswers,
+      });
+
+      dispatch(createQuizSuccess(res.data));
+    } catch (error) {
+      // Catching the error
+      const { response } = error as AxiosError;
+
+      dispatch(
+        createQuizFail(response?.data || "Something unexpected happend!"),
+      );
+    }
   }
 };
 
