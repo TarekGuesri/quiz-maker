@@ -7,17 +7,17 @@ import { CreateQuizState, ChangeAnswer } from "src/types";
 const firstAnswerID = uuidv4();
 
 const initialState: CreateQuizState = {
-  title: "aaaa",
+  title: "",
   questionIndex: 0,
   questions: [
     {
       id: uuidv4(),
-      content: "bbbb",
+      content: "",
       answers: [
-        { id: firstAnswerID, text: "1111" },
-        { id: uuidv4(), text: "222" },
-        { id: uuidv4(), text: "333" },
-        { id: uuidv4(), text: "4444" },
+        { id: firstAnswerID, text: "" },
+        { id: uuidv4(), text: "" },
+        { id: uuidv4(), text: "" },
+        { id: uuidv4(), text: "" },
       ],
     },
   ],
@@ -32,6 +32,7 @@ export const createQuizSlice = createSlice({
   name: "create-quiz",
   initialState,
   reducers: {
+    resetState: () => initialState,
     addQuestion: (state) => {
       const firstAnswerID = uuidv4();
 
@@ -152,6 +153,7 @@ export const createQuizSlice = createSlice({
 });
 
 export const {
+  resetState,
   addQuestion,
   changeAnswer,
   changeTitle,
