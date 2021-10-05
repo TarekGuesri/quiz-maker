@@ -10,7 +10,6 @@ const QuestionSchema: Schema = new Schema<QuestionDocument>({
   content: {
     type: String,
     required: [true, "Please add a content!"],
-    unique: true,
     trim: true,
     maxlength: [50, "Content can not be more than 50 characters"],
   },
