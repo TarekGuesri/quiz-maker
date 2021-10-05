@@ -3,7 +3,7 @@
 exports[`src/components/create-quiz-form-success.tsx Render CreateQuizSuccess component 1`] = `
 <div>
   <div
-    class="MuiTypography-root MuiTypography-h5 css-fs275z-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-h5 css-ue653o-MuiTypography-root"
   >
     Your quiz has been created!
   </div>
@@ -26,7 +26,7 @@ exports[`src/components/create-quiz-form-success.tsx Render CreateQuizSuccess co
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
   >
     <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1kgfixx-MuiGrid-root"
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-77ccod-MuiGrid-root"
     >
       Here's the link to your quiz:
        
@@ -36,6 +36,20 @@ exports[`src/components/create-quiz-form-success.tsx Render CreateQuizSuccess co
       >
         http://localhost:/quiz/test
       </a>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1kgfixx-MuiGrid-root"
+    >
+      <button
+        class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButtonBase-root css-17gny3x-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Create another quiz
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
     </div>
   </div>
 </div>
