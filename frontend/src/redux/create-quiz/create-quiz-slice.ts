@@ -24,7 +24,7 @@ const initialState: CreateQuizState = {
   selectedAnswers: [firstAnswerID],
   isLoading: false,
   isValid: false,
-  quizID: "aaa",
+  quizID: "",
   errorMessage: "",
 };
 
@@ -140,9 +140,8 @@ export const createQuizSlice = createSlice({
       state.isLoading = true;
     },
     createQuizSuccess: (state, action: PayloadAction<string>) => {
-      console.log(action.payload);
-
       state.errorMessage = "";
+      state.quizID = action.payload;
       state.isLoading = false;
     },
     createQuizFail: (state, action: PayloadAction<string>) => {
