@@ -10,11 +10,15 @@ export const getEnv: () => Environment = () => {
   }
 };
 
+const frontendPort = location.port;
 const environments: Environment[] = ["development", "production"];
 const e = environments.indexOf(getEnv());
 
 export const config = {
+  frontend: {
+    url: [`http://localhost:${frontendPort}`, "http://localhost:5000"][e],
+  },
   api: {
-    url: [`http://localhost:5000`, "http://localhost:5000"][e],
+    url: ["http://localhost:5000", "http://localhost:5000"][e],
   },
 };
