@@ -24,6 +24,7 @@ const initialState: CreateQuizState = {
   selectedAnswers: [firstAnswerID],
   isLoading: false,
   isValid: false,
+  quizID: "aaa",
   errorMessage: "",
 };
 

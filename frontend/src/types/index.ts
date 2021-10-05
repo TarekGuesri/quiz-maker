@@ -27,5 +27,6 @@ export interface CreateQuizState {
   selectedAnswers: Array<string>;
   isLoading: boolean;
   isValid: boolean;
+  quizID: string;
   errorMessage: string;
 }
