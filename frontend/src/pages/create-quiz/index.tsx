@@ -8,7 +8,9 @@ const CreateQuiz: React.FC = ({}) => {
   const { quizID } = useAppSelector((state) => state.createQuiz);
 
   return (
-    <CardBox>{quizID ? <CreateQuizSuccess /> : <CreateQuizForm />}</CardBox>
+    <CardBox>
+      {quizID ? <CreateQuizSuccess quizID={quizID} /> : <CreateQuizForm />}
+    </CardBox>
   );
 };
 
