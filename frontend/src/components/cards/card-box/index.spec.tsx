@@ -4,24 +4,20 @@
 
 import React from "react";
 import { cleanup, render } from "@testing-library/react";
-import { Router } from "react-router-dom";
-import { Provider } from "react-redux";
 import { Theme } from "src/components/theme";
+import { Provider } from "react-redux";
 import { store } from "src/redux/store";
-import { history } from "src/utils/history";
-import { Hero } from "./hero";
+import { CardBox } from ".";
 
-describe("src/components/loading/Hero.tsx", () => {
+describe("src/components/cards/card-box/index.tsx", () => {
   afterEach(() => cleanup());
 
-  test("Render Loading component", () => {
+  test("Render CardBox component", () => {
     const renderedLoading = render(
       <Provider store={store}>
-        <Router history={history}>
-          <Theme>
-            <Hero />
-          </Theme>
-        </Router>
+        <Theme>
+          <CardBox>Test</CardBox>
+        </Theme>
       </Provider>,
     );
 

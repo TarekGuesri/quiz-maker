@@ -1,14 +1,27 @@
+/**
+ * @jest-environment jsdom
+ */
+
+import React from "react";
 import { cleanup, render } from "@testing-library/react";
 import App from "./app";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { Theme } from "src/components/theme";
+import { store } from "src/redux/store";
+import { history } from "src/utils/history";
 
 describe("src/entry/app.tsx", () => {
   afterEach(() => cleanup());
   test("Render App component", () => {
     const renderedApp = render(
-      <Router>
-        <App />
-      </Router>,
+      <Provider store={store}>
+        <Router history={history}>
+          <Theme>
+            <App />
+          </Theme>
+        </Router>
+      </Provider>,
     );
     expect(renderedApp.container).toMatchSnapshot();
   });
