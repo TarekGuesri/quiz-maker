@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/components/create-quiz-form-success.tsx Render CreateQuizSuccess component 1`] = `
+<div>
+  <div
+    class="MuiTypography-root MuiTypography-h5 css-fs275z-MuiTypography-root"
+  >
+    Your quiz has been created!
+  </div>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-eshe5m-MuiTypography-root"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+      data-testid="CheckCircleIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+      />
+    </svg>
+  </p>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1kgfixx-MuiGrid-root"
+    >
+      Here's the link to your quiz:
+       
+      <a
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-121d6ld-MuiTypography-root-MuiLink-root"
+        href="http://localhost:/quiz/test"
+      >
+        http://localhost:/quiz/test
+      </a>
+    </div>
+  </div>
+</div>
+`;

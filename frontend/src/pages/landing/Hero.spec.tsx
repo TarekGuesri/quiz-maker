@@ -14,7 +14,7 @@ import { Hero } from "./hero";
 describe("src/components/loading/Hero.tsx", () => {
   afterEach(() => cleanup());
 
-  test("Render Loading component", () => {
+  test("Render Hero component", () => {
     const renderedLoading = render(
       <Provider store={store}>
         <Router history={history}>
