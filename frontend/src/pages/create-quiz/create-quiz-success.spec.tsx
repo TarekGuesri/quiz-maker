@@ -12,7 +12,7 @@ import { config } from "src/config";
 import { CreateQuizSuccess } from "./create-quiz-success";
 import { createQuizSuccess } from "src/redux/create-quiz/create-quiz-slice";
 
-describe("src/components/create-quiz-form-success.tsx", () => {
+describe("src/components/create-quiz-success.tsx", () => {
   afterEach(() => cleanup());
 
   test("Render CreateQuizSuccess component", () => {

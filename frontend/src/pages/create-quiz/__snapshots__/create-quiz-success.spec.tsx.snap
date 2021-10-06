@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`src/components/create-quiz-form-success.tsx Render CreateQuizSuccess component 1`] = `
+exports[`src/components/create-quiz-success.tsx Render CreateQuizSuccess component 1`] = `
 <div>
   <div
     class="MuiTypography-root MuiTypography-h5 css-ue653o-MuiTypography-root"
