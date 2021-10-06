@@ -27,17 +27,9 @@ describe("src/components/create-quiz-form.tsx", () => {
     expect(questionContentInput).toHaveDisplayValue("");
 
     // Answers' text
-    const answer1 = screen.getByTestId("answer-text-1");
-    expect(answer1).toHaveDisplayValue("");
-
-    const answer2 = screen.getByTestId("answer-text-2");
-    expect(answer2).toHaveDisplayValue("");
-
-    const answer3 = screen.getByTestId("answer-text-3");
-    expect(answer3).toHaveDisplayValue("");
-
-    const answer4 = screen.getByTestId("answer-text-4");
-    expect(answer4).toHaveDisplayValue("");
+    for (let i = 1; i <= 4; i++) {
+      expect(screen.getByTestId(`answer-text-${i}`)).toHaveDisplayValue("");
+    }
 
     // Checking remove question button
     const removeQuestionButton = screen.getByRole("button", {
