@@ -10,7 +10,7 @@ describe("src/components/layout/navbar", () => {
   afterEach(() => cleanup());
 
   test("Render Navbar component", () => {
-    const renderedLoading = render(
+    const renderedComponent = render(
       <Provider store={store}>
         <Router history={history}>
           <Navbar />
@@ -18,7 +18,7 @@ describe("src/components/layout/navbar", () => {
       </Provider>,
     );
 
-    expect(renderedLoading.container).toMatchSnapshot();
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 
   test("Check if dark mode changes after clicking the switch", () => {
