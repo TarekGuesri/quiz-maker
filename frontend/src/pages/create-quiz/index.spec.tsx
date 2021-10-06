@@ -7,7 +7,7 @@ import { history } from "src/utils/history";
 import CreateQuiz from ".";
 import { Theme } from "src/components/theme";
 
-describe("src/components/layout/navbar", () => {
+describe("src/pages/create-quiz", () => {
   afterEach(() => cleanup());
 
   test("CreateQuiz renders a quiz creation form when quizID is empty", () => {
