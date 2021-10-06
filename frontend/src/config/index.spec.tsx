@@ -5,11 +5,11 @@ import { Environment } from "src/types";
 describe("src/config/index.ts", () => {
   afterEach(() => cleanup());
 
-  test("getEnv return development when location.hostname is localhost", () => {
+  test("getEnv returns development when location.hostname is localhost", () => {
     expect(getEnv()).toBe<Environment>("development");
   });
 
-  test("getEnv return production when location.hostname is not localhost", () => {
+  test("getEnv returns production when location.hostname is not localhost", () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     delete (window as any).location;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
