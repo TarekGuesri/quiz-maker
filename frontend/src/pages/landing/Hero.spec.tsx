@@ -15,7 +15,7 @@ describe("src/components/loading/Hero.tsx", () => {
   afterEach(() => cleanup());
 
   test("Render Hero component", () => {
-    const renderedLoading = render(
+    const renderedComponent = render(
       <Provider store={store}>
         <Router history={history}>
           <Theme>
@@ -25,6 +25,6 @@ describe("src/components/loading/Hero.tsx", () => {
       </Provider>,
     );
 
-    expect(renderedLoading.container).toMatchSnapshot();
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 });

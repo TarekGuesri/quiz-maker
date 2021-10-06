@@ -15,7 +15,7 @@ describe("src/components/create-quiz-form-success.tsx", () => {
   afterEach(() => cleanup());
 
   test("Render CreateQuizSuccess component", () => {
-    const renderedLoading = render(
+    const renderedComponent = render(
       <Provider store={store}>
         <Theme>
           <CreateQuizSuccess quizID="test" />
@@ -23,7 +23,7 @@ describe("src/components/create-quiz-form-success.tsx", () => {
       </Provider>,
     );
 
-    expect(renderedLoading.container).toMatchSnapshot();
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 
   test("The quiz url must have the same quizID from props", () => {

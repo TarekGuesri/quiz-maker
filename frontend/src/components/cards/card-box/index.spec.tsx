@@ -13,7 +13,7 @@ describe("src/components/cards/card-box/index.tsx", () => {
   afterEach(() => cleanup());
 
   test("Render CardBox component", () => {
-    const renderedLoading = render(
+    const renderedComponent = render(
       <Provider store={store}>
         <Theme>
           <CardBox>Test</CardBox>
@@ -21,6 +21,6 @@ describe("src/components/cards/card-box/index.tsx", () => {
       </Provider>,
     );
 
-    expect(renderedLoading.container).toMatchSnapshot();
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 });

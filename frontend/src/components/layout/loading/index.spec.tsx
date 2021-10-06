@@ -10,8 +10,8 @@ describe("src/components/loading/index.tsx", () => {
   afterEach(() => cleanup());
 
   test("Render Loading component", () => {
-    const renderedLoading = render(<Loading />);
+    const renderedComponent = render(<Loading />);
 
-    expect(renderedLoading.container).toMatchSnapshot();
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 });
