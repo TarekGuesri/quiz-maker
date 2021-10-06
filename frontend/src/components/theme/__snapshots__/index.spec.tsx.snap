@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/components/theme Render Theme component when darkMode is false 1`] = `
+<div>
+  Test 
+</div>
+`;
+
+exports[`src/components/theme Render Theme component when darkMode is true 1`] = `
+<div>
+  Test 
+</div>
+`;

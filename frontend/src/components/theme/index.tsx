@@ -18,7 +18,6 @@ export const Theme: FC = (props) => {
       },
       primary: {
         main: "#8e49de",
-        // contrastText:
       },
       secondary: {
         main: "#edb200",
