@@ -9,9 +9,9 @@ import { Provider } from "react-redux";
 import { Theme } from "src/components/theme";
 import { store } from "src/redux/store";
 import { history } from "src/utils/history";
-import { Hero } from "./hero";
+import { Hero } from "../landing/hero";
 
-describe("src/components/loading/Hero.tsx", () => {
+describe("src/pages/create-quiz/Hero.tsx", () => {
   afterEach(() => cleanup());
 
   test("Render Hero component", () => {

@@ -46,7 +46,7 @@ exports[`src/components/landing/Hero.tsx Render Hero component 1`] = `
 </div>
 `;
 
-exports[`src/components/loading/Hero.tsx Render Hero component 1`] = `
+exports[`src/pages/create-quiz/Hero.tsx Render Hero component 1`] = `
 <div>
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root makeStyles-root-4 css-4nwtfp-MuiPaper-root-MuiCard-root"
