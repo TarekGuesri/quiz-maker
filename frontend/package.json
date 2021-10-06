@@ -41,6 +41,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:cov": "yarn test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "eslint:check": "eslint \"src/**/*.*\" --report-unused-disable-directives",
     "eslint:fix": "eslint \"**/*.*\" --quiet --fix"
