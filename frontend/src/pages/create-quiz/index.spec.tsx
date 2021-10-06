@@ -1,16 +1,17 @@
 import React from "react";
-import { cleanup, render, screen, fireEvent } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "src/redux/store";
 import { history } from "src/utils/history";
-import CreateQuiz from ".";
 import { Theme } from "src/components/theme";
+import { createQuizSuccess } from "src/redux/create-quiz/create-quiz-slice";
+import CreateQuiz from ".";
 
 describe("src/pages/create-quiz", () => {
   afterEach(() => cleanup());
 
-  test("CreateQuiz renders a quiz creation form when quizID is empty", () => {
+  test("CreateQuiz renders a quiz creation form when quizID is empty and renders create-quiz-success when quizID is not empty", () => {
     const {
       createQuiz: { quizID },
     } = store.getState();
@@ -28,5 +29,9 @@ describe("src/pages/create-quiz", () => {
     );
 
     expect(screen.getByText("Create a quiz")).toBeTruthy();
+
+    store.dispatch(createQuizSuccess("test"));
+
+    expect(screen.getByText("Your quiz has been created!")).toBeTruthy();
   });
 });
