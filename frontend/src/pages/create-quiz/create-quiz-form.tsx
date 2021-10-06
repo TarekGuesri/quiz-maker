@@ -123,6 +123,7 @@ export const CreateQuizForm: React.FC = ({}) => {
             variant="outlined"
             size="medium"
             fullWidth
+            inputProps={{ "data-testid": "quiz-title" }}
           />
         </Grid>
 
@@ -140,6 +141,7 @@ export const CreateQuizForm: React.FC = ({}) => {
             variant="outlined"
             size="medium"
             fullWidth
+            inputProps={{ "data-testid": "question-content" }}
           />
         </Grid>
 
@@ -171,6 +173,7 @@ export const CreateQuizForm: React.FC = ({}) => {
                       name={answer.id}
                       value={answer.text}
                       onChange={handleChangeAnswer}
+                      inputProps={{ "data-testid": `answer-text-${index + 1}` }}
                     />
                   }
                 />
