@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/components/layout/navbar Render Navbar component 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1rcbgiz"
+  >
+    <header
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorTransparent MuiAppBar-positionStatic css-pivuyh-MuiPaper-root-MuiAppBar-root"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular makeStyles-toolbar-1 css-1t29gy6-MuiToolbar-root"
+      >
+        <div
+          class="MuiTypography-root MuiTypography-h4 css-756fpk-MuiTypography-root"
+        >
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+            style="text-decoration: none;"
+          >
+            QuizMaker
+          </a>
+        </div>
+        <div
+          class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+        >
+          <label
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+          >
+            <span
+              class="MuiSwitch-root MuiSwitch-sizeMedium css-julti5-MuiSwitch-root"
+            >
+              <span
+                class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+              >
+                <input
+                  class="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+                  type="checkbox"
+                  value=""
+                />
+                <span
+                  class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+                />
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+            >
+              🌙
+            </span>
+          </label>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+`;
