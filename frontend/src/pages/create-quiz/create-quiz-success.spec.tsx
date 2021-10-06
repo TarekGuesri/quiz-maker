@@ -3,13 +3,14 @@
  */
 
 import React from "react";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { Theme } from "src/components/theme";
 import { store } from "src/redux/store";
 import { config } from "src/config";
 
 import { CreateQuizSuccess } from "./create-quiz-success";
+import { createQuizSuccess } from "src/redux/create-quiz/create-quiz-slice";
 
 describe("src/components/create-quiz-form-success.tsx", () => {
   afterEach(() => cleanup());
@@ -42,5 +43,31 @@ describe("src/components/create-quiz-form-success.tsx", () => {
     screen.getByRole("link", {
       name: expectedQuizURL,
     });
+  });
+
+  test("quizID from redux becomes empty when clicking create another quiz button", () => {
+    store.dispatch(createQuizSuccess("test"));
+
+    const {
+      createQuiz: { quizID },
+    } = store.getState();
+
+    expect(quizID).toEqual("test");
+
+    render(
+      <Provider store={store}>
+        <Theme>
+          <CreateQuizSuccess quizID={quizID} />
+        </Theme>
+      </Provider>,
+    );
+
+    const createButton = screen.getByRole("button", {
+      name: /create another quiz/i,
+    });
+
+    fireEvent.click(createButton);
+
+    expect(store.getState().createQuiz.quizID).toEqual("");
   });
 });
