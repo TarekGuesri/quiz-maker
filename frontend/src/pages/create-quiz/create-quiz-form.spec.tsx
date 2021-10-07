@@ -18,7 +18,7 @@ jest.mock("axios");
 describe("src/components/create-quiz-form.tsx", () => {
   afterEach(() => cleanup());
 
-  test("Form should be empty on mount and remove question should be disabled", () => {
+  test("Form should be empty on mount", () => {
     render(
       <Provider store={store}>
         <Theme>
@@ -39,13 +39,6 @@ describe("src/components/create-quiz-form.tsx", () => {
     for (let i = 1; i <= 4; i++) {
       expect(screen.getByTestId(`answer-text-${i}`)).toHaveDisplayValue("");
     }
-
-    // Checking remove question button
-    const removeQuestionButton = screen.getByRole("button", {
-      name: /remove question/i,
-    });
-
-    expect(removeQuestionButton).toBeDisabled();
   });
 
   test("Form can't be submitted when fields are empty and get quizID when submitting", async () => {
@@ -109,5 +102,66 @@ describe("src/components/create-quiz-form.tsx", () => {
     expect(createButton).toBeEnabled();
 
     expect(store.getState().createQuiz.quizID).toEqual("test");
+  });
+
+  test("Test quiz pagination", async () => {
+    const { queryByTestId } = render(
+      <Provider store={store}>
+        <Theme>
+          <CreateQuizForm />
+        </Theme>
+      </Provider>,
+    );
+
+    /*  
+    Checking remove question button disability on mount 
+    */
+    const removeQuestionButton = screen.getByRole("button", {
+      name: /remove question/i,
+    });
+
+    expect(removeQuestionButton).toBeDisabled();
+
+    /* 
+  Add question button should be enabled on mount 
+      */
+    const addQuestionButton = screen.getByRole("button", {
+      name: /add a question/i,
+    });
+
+    expect(addQuestionButton).toBeEnabled();
+    /* 
+      Adding 9 questions, addQuestionButton should be disabled when there are 10 questions
+      */
+    for (let questionNumber = 2; questionNumber <= 10; questionNumber++) {
+      fireEvent.click(addQuestionButton);
+
+      if (questionNumber < 10) {
+        expect(addQuestionButton).toBeEnabled();
+      } else {
+        expect(addQuestionButton).toBeDisabled();
+      }
+    }
+    /* 
+    Removing a question
+     */
+    const pageTenButton = screen.getByTestId("page-10");
+    expect(pageTenButton).toBeTruthy();
+
+    fireEvent.click(removeQuestionButton);
+
+    expect(queryByTestId("page-10")).toBeNull();
+
+    /* 
+    Changing question page
+     */
+
+    // Since we deleted the 10th page, the 9th page should be selected
+    expect(screen.getByTestId("page-9")).toHaveClass("Mui-selected");
+
+    // Changing page to 8
+    const pageEightButton = screen.getByTestId("page-8");
+    fireEvent.click(pageEightButton);
+    expect(pageEightButton).toHaveClass("Mui-selected");
   });
 });

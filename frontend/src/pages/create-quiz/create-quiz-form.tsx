@@ -13,6 +13,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import {
@@ -198,6 +199,13 @@ export const CreateQuizForm: React.FC = ({}) => {
             page={questionIndex + 1}
             color="primary"
             onChange={handleChangePage}
+            renderItem={(item) => {
+              if (item.type === "page") {
+                return (
+                  <PaginationItem {...item} data-testid={`page-${item.page}`} />
+                );
+              } else return <PaginationItem {...item} />;
+            }}
           />
         </Grid>
 
