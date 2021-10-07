@@ -166,7 +166,15 @@ export const CreateQuizForm: React.FC = ({}) => {
                   key={answer.id}
                   className={classes.formControlLabel}
                   value={answer.id}
-                  control={<Radio />}
+                  control={
+                    <Radio
+                      inputProps={{
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        "data-testid": `answer-radio-${index + 1}`,
+                      }}
+                    />
+                  }
                   label={
                     <TextField
                       label={`Answer ${index + 1}...`}
@@ -244,6 +252,7 @@ export const CreateQuizForm: React.FC = ({}) => {
               className={classes.button}
               onClick={() => dispatch(createQuiz())}
               disabled={isLoading}
+              data-testid={`upload-button-loading-${isLoading}`}
             >
               Create Quiz
             </Button>
