@@ -42,10 +42,6 @@ describe("src/components/create-quiz-form.tsx", () => {
   });
 
   test("Form can't be submitted when fields are empty and get quizID when submitting", async () => {
-    (axios as jest.Mocked<typeof axios>).post.mockResolvedValue({
-      data: "test",
-    });
-
     render(
       <Provider store={store}>
         <Theme>
@@ -88,16 +84,37 @@ describe("src/components/create-quiz-form.tsx", () => {
       }
     }
 
-    // Creating quiz
+    /*      
+    Creating quiz
+     */
+
     const createButton = screen.getByRole("button", {
       name: /create quiz/i,
+    });
+
+    // Checking failed request
+    (axios as jest.Mocked<typeof axios>).post.mockRejectedValue({
+      response: { data: "test" },
+    });
+
+    fireEvent.click(createButton);
+
+    await waitFor(() => screen.getByTestId("create-button-loading-false"));
+
+    expect(store.getState().createQuiz.errorMessage).toEqual("test");
+
+    expect(screen.getByRole("alert")).toBeTruthy();
+
+    // Checking successful request
+    (axios as jest.Mocked<typeof axios>).post.mockResolvedValue({
+      data: "test",
     });
 
     fireEvent.click(createButton);
 
     expect(createButton).toBeDisabled();
 
-    await waitFor(() => screen.getByTestId("upload-button-loading-false"));
+    await waitFor(() => screen.getByTestId("create-button-loading-false"));
 
     expect(createButton).toBeEnabled();
 

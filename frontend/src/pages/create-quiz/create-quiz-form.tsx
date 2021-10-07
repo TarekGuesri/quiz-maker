@@ -260,7 +260,7 @@ export const CreateQuizForm: React.FC = ({}) => {
               className={classes.button}
               onClick={() => dispatch(createQuiz())}
               disabled={isLoading}
-              data-testid={`upload-button-loading-${isLoading}`}
+              data-testid={`create-button-loading-${isLoading}`}
             >
               Create Quiz
             </Button>

@@ -192,9 +192,9 @@ export const createQuiz = (): AppThunk => async (dispatch, getState) => {
       // Catching the error
       const { response } = error as AxiosError;
 
-      dispatch(
-        createQuizFail(response?.data || "Something unexpected happend!"),
-      );
+      const errorMessage = response?.data || "Something unexpected happend!";
+
+      dispatch(createQuizFail(errorMessage));
     }
   }
 };
