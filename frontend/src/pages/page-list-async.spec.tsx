@@ -8,7 +8,7 @@ import { history } from "src/utils/history";
 
 import { LandingPage, CreateQuizPage } from "./page-list-async";
 
-describe("src/pages/page-list-async.spec.tsx", () => {
+describe("src/pages/page-list-async.tsx", () => {
   afterEach(() => cleanup());
 
   test("LandingPage renders", async () => {
