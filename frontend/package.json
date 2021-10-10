@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "jest": {
-    "coveragePathIgnorePatterns": ["/node_modules/", "src/index.tsx"]
+    "coveragePathIgnorePatterns": ["/node_modules/", "src/index.tsx", "src/pages/page-list-async.tsx"]
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
