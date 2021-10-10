@@ -1,9 +1,6 @@
-import React from "react";
-import { cleanup, render, screen, fireEvent } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { Theme } from "src/components/theme";
+import { cleanup } from "@testing-library/react";
+import axios from "axios";
 import { store } from "src/redux/store";
-import { config } from "src/config";
 import {
   removeQuestion,
   addQuestion,
@@ -13,7 +10,10 @@ import {
   changeQuestion,
   changeAnswer,
   validateForm,
+  createQuiz,
 } from "./create-quiz-slice";
+
+jest.mock("axios");
 
 describe("src/redux/create-quiz/create-quiz-slice.ts", () => {
   afterEach(() => cleanup());
@@ -86,5 +86,34 @@ describe("src/redux/create-quiz/create-quiz-slice.ts", () => {
     store.dispatch(validateForm());
     expect(store.getState().createQuiz.isValid).toBe(true);
     expect(store.getState().createQuiz.errorMessage).toBe("");
+  });
+
+  test("Checking error message when error repsone doesn't have a message when creating a form", async () => {
+    // Filling form
+    store.dispatch(changeTitle("Quiz Title"));
+    store.dispatch(changeQuestion("Question 1"));
+    store
+      .getState()
+      .createQuiz.questions[0].answers.forEach((answer, index) => {
+        store.dispatch(
+          changeAnswer({ name: answer.id, value: index.toString() }),
+        );
+      });
+
+    // Getting failed requestion without a repsonse value
+    (axios as jest.Mocked<typeof axios>).post.mockRejectedValue({});
+
+    await store.dispatch(createQuiz());
+
+    expect(store.getState().createQuiz.errorMessage).toBe(
+      "Something unexpected happend!",
+    );
+  });
+
+  test("createForm shouldn't do anything when form is not valid", async () => {
+    await store.dispatch(createQuiz());
+
+    expect(store.getState().createQuiz.isValid).toBe(false);
+    expect(store.getState().createQuiz.errorMessage).not.toBe("");
   });
 });

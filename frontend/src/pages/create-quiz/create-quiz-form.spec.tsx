@@ -106,7 +106,7 @@ describe("src/components/create-quiz-form.tsx", () => {
     expect(screen.getByRole("alert")).toBeTruthy();
 
     // Checking successful request
-    (axios as jest.Mocked<typeof axios>).post.mockResolvedValue({
+    (axios as jest.Mocked<typeof axios>).post.mockResolvedValueOnce({
       data: "test",
     });
 
