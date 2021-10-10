@@ -4,11 +4,7 @@
   "description": "",
   "main": "server.js",
   "jest": {
-    "collectCoverage": true,
-    "coverageReporters": [
-      "json",
-      "html"
-    ]
+    "collectCoverageFrom": ["src/**/*.{ts,js}"]
   },
   "scripts": {
     "start": "node dist/server.js",
