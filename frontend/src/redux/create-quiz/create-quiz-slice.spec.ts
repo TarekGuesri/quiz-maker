@@ -113,7 +113,9 @@ describe("src/redux/create-quiz/create-quiz-slice.ts", () => {
   test("createForm shouldn't do anything when form is not valid", async () => {
     await store.dispatch(createQuiz());
 
+    // There should be an error message and quizID should be empty
     expect(store.getState().createQuiz.isValid).toBe(false);
     expect(store.getState().createQuiz.errorMessage).not.toBe("");
+    expect(store.getState().createQuiz.quizID).toBe("");
   });
 });
