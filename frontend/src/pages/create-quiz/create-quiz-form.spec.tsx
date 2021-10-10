@@ -12,11 +12,18 @@ import { Theme } from "src/components/theme";
 import { store } from "src/redux/store";
 
 import { CreateQuizForm } from "./create-quiz-form";
+import {
+  addQuestion,
+  resetState,
+} from "src/redux/create-quiz/create-quiz-slice";
 
 jest.mock("axios");
 
 describe("src/components/create-quiz-form.tsx", () => {
   afterEach(() => cleanup());
+  beforeEach(() => {
+    store.dispatch(resetState());
+  });
 
   test("Form should be empty on mount", () => {
     render(
@@ -180,5 +187,31 @@ describe("src/components/create-quiz-form.tsx", () => {
     const pageEightButton = screen.getByTestId("page-8");
     fireEvent.click(pageEightButton);
     expect(pageEightButton).toHaveClass("Mui-selected");
+  });
+
+  test("Page shouldn't change when clicking the dots of pagination", () => {
+    render(
+      <Provider store={store}>
+        <Theme>
+          <CreateQuizForm />
+        </Theme>
+      </Provider>,
+    );
+
+    // The dots appear when there are at least 8 pages, so we add 7 pages
+    for (let i = 0; i < 7; i++) {
+      store.dispatch(addQuestion());
+    }
+
+    expect(store.getState().createQuiz.questionIndex).toBe(7);
+
+    const dotsElement = screen.getByText(/…/i);
+
+    expect(dotsElement).toBeTruthy();
+
+    fireEvent.click(dotsElement);
+
+    // Index should stay the same
+    expect(store.getState().createQuiz.questionIndex).toBe(7);
   });
 });
