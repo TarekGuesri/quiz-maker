@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "jest": {
-    "collectCoverageFrom": ["src/**/*.{ts,js}"]
+    "collectCoverageFrom": ["src/**/*.{ts,js}"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "src/server.ts", "dist/*"]
   },
   "scripts": {
     "start": "node dist/server.js",
