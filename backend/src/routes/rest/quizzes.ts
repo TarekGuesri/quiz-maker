@@ -3,7 +3,7 @@ import { checkSchema } from "express-validator";
 import { quizSchema } from "../../utils/validators";
 import { getQuizzes, createQuiz } from "../../controllers/quizzes";
 
-const quizzesRouter: Router = Router();
+export const quizzesRouter: Router = Router();
 
 // @route GET quizzes/
 // @desc Gets quizzes
@@ -14,5 +14,3 @@ quizzesRouter.get("/", getQuizzes);
 // @desc creates a quiz
 // @access Public
 quizzesRouter.post("/", checkSchema(quizSchema), createQuiz);
-
-export = quizzesRouter;

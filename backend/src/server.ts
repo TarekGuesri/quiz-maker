@@ -10,7 +10,7 @@ import mongoSanitize from "express-rate-limit";
 
 import { connectDB } from "./config/db";
 
-import restRoute from "./routes/rest";
+import { restRouter } from "./routes/rest";
 
 // Load env vars
 dotenv.config();
@@ -53,7 +53,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Defining Routes
-app.use("/rest", restRoute);
+app.use("/rest", restRouter);
 
 const PORT = process.env.PORT || 5001;
 
