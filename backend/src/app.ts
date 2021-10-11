@@ -2,14 +2,12 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import morgan from "morgan";
-
 import helmet from "helmet";
 import hpp from "hpp";
 import rateLimit from "express-rate-limit";
 import mongoSanitize from "express-rate-limit";
 
 import { connectDB } from "./config/db";
-
 import { restRouter } from "./routes/rest";
 
 // Load env vars
