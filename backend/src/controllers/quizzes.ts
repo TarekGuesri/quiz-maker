@@ -16,7 +16,6 @@ export const getQuizzes = async (
       path: "answers",
     },
   });
-  // const quizzes = await Quiz.find({});
 
   return res.json(quizzes);
 };
