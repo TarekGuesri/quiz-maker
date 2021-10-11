@@ -12,6 +12,7 @@
       "src/app.ts",
       "src/server.ts",
       "src/utils/secrets.ts",
+      "src/config/db.ts",
       "dist/*"
     ]
   },

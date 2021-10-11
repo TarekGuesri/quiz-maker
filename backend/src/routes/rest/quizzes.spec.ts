@@ -14,14 +14,15 @@ describe("src/routes/rest/quizzes.ts", () => {
   // Setup connection to the database
   beforeAll(async () => {
     await connectDB();
+
     await Answer.create(answers);
     await Question.create(questions);
     await Quiz.create(quizzes);
   });
   afterAll(async () => {
-    await Quiz.remove({});
-    await Question.remove({});
-    await Answer.remove({});
+    await Quiz.deleteMany({});
+    await Question.deleteMany({});
+    await Answer.deleteMany({});
 
     disconnectDB();
   });
@@ -38,8 +39,6 @@ describe("src/routes/rest/quizzes.ts", () => {
     // questions must be a an array of a length between 10 and 10
     // selectedAnswers must be an array of strings
     let response = await request(app).post("/rest/quizzes");
-
-    console.log(response.body);
 
     let { errors } = response.body;
 
@@ -66,19 +65,15 @@ describe("src/routes/rest/quizzes.ts", () => {
           answers: [
             {
               text: "",
-              isCorrect: false,
             },
             {
               text: "2",
-              isCorrect: true,
             },
             {
               text: "3",
-              isCorrect: false,
             },
             {
               text: "4",
-              isCorrect: false,
             },
           ],
         },
@@ -110,5 +105,78 @@ describe("src/routes/rest/quizzes.ts", () => {
 
     response = await request(app).post("/rest/quizzes").send(formData);
     expect(response.statusCode).toBe(200);
+  });
+
+  test("createQuiz should return quiz code on a successful success, and if a question doesn't have an answer in the selected answers array, the first answer should be correct by default", async () => {
+    const formData = {
+      title: "Test Quiz",
+      questions: [
+        {
+          content: "Question 1",
+          answers: [
+            {
+              id: "1",
+              text: "1",
+            },
+            {
+              id: "2",
+              text: "2",
+            },
+            {
+              id: "3",
+              text: "3",
+            },
+            {
+              id: "4",
+              text: "4",
+            },
+          ],
+        },
+        {
+          content: "Question 2",
+          answers: [
+            {
+              id: "5",
+              text: "5",
+            },
+            {
+              id: "6",
+              text: "6",
+            },
+            {
+              id: "7",
+              text: "7",
+            },
+            {
+              id: "8",
+              text: "8",
+            },
+          ],
+        },
+      ],
+      selectedAnswers: ["3"],
+    };
+
+    const response = await request(app).post("/rest/quizzes").send(formData);
+
+    expect(response.statusCode).toBe(200);
+    const quizCode = response.body;
+    // repsonse should return a string of quiz code
+    expect(typeof quizCode).toBe("string");
+
+    // We get the quiz by code from database and check if it has the same title
+    const createdQuiz = await Quiz.findOne({ code: quizCode }).populate({
+      path: "questions",
+      populate: {
+        path: "answers",
+      },
+    });
+
+    expect(createdQuiz).toBeTruthy();
+    expect(createdQuiz?.title).toBe(formData.title);
+
+    // Answer 3 and 5 should be correct
+    expect(createdQuiz?.questions[0].answers[2].isCorrect).toBe(true);
+    expect(createdQuiz?.questions[1].answers[0].isCorrect).toBe(true);
   });
 });
