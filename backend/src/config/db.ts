@@ -12,6 +12,6 @@ export const connectDB = async (): Promise<void> => {
   }
 };
 
-export const disconnectDB = (done: CallbackWithoutResult): void => {
-  mongoose.disconnect(done);
+export const disconnectDB = (): void => {
+  mongoose.disconnect();
 };
