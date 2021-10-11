@@ -34,6 +34,6 @@ const QuizSchema: Schema = new Schema<QuizDocument>(
   { timestamps: true },
 );
 
-const Quiz = model("Quiz", QuizSchema);
+const Quiz = model<QuizDocument>("Quiz", QuizSchema);
 
 export default Quiz;

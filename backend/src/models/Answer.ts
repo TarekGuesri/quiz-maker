@@ -18,6 +18,6 @@ const AnswerSchema: Schema = new Schema<AnswerDocument>({
   },
 });
 
-const Answer = model("Answer", AnswerSchema);
+const Answer = model<AnswerDocument>("Answer", AnswerSchema);
 
 export default Answer;
