@@ -17,6 +17,7 @@ export const getQuizzes = async (
     },
   });
   // const quizzes = await Quiz.find({});
+
   return res.json(quizzes);
 };
 
@@ -75,6 +76,5 @@ export const createQuiz = async (
     questions: createdQuestions,
   });
 
-  return res.status(400).json("test");
   return res.json(code);
 };
