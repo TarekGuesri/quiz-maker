@@ -1,6 +1,6 @@
-import mongoose, { CallbackWithoutResult } from "mongoose";
+import mongoose from "mongoose";
 import colors from "colors";
-import { MONGODB_URI } from "../utils/secrets";
+import { MONGODB_URI } from "./secrets";
 
 export const connectDB = async (): Promise<void> => {
   const conn = await mongoose.connect(MONGODB_URI || "");
