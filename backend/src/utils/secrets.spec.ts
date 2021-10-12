@@ -1,9 +1,12 @@
+import { ENVIRONMENT } from "./secrets";
+
 describe("src/utils/secrets.ts", () => {
-  beforeEach(() => {
-    process.env.NODE_ENV = "dev";
+  test("Testing test environment", () => {
+    expect(ENVIRONMENT).toBe("test");
   });
 
-  test("Testing production environment", () => {
+  test("Testing production  environment", () => {
+    jest.resetModules();
     process.env.NODE_ENV = "production";
 
     import("./secrets").then((secrets) => {
