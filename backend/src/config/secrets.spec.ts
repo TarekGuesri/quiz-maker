@@ -37,6 +37,7 @@ describe("src/utils/secrets.ts", () => {
 
   test("MONGODB_URI should get the value from process.env", async () => {
     jest.resetModules();
+    jest.mock("fs");
     let secrets = await import("./secrets");
 
     expect(secrets.MONGODB_URI).toBeTruthy();
