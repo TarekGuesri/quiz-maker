@@ -2,15 +2,20 @@ import dotenv from "dotenv";
 import fs from "fs";
 import { Environment } from "../types/index";
 
+// Disabling logs when doing testing
+if (process.env.NODE_ENV === "test") {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  console.log = () => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  console.error = () => {};
+}
+
 const DB_URI_VARS = ["MONGODB_URI", "MONGODB_URI_DEV", "MONGODB_URI_TEST"];
 
 // Getting env variables from .env files
 if (fs.existsSync(".env")) {
   console.log("Using .env file to supply config environment variables");
   dotenv.config({ path: ".env" });
-} else {
-  console.log("Using .env.example file to supply config environment variables");
-  dotenv.config({ path: ".env.example" }); // you can delete this after you create your own .env file!
 }
 
 // Environment getter

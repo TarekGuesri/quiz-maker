@@ -58,8 +58,8 @@ export const Theme: FC = (props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      {props.children}
       <CssBaseline />
+      {props.children}
     </ThemeProvider>
   );
 };
