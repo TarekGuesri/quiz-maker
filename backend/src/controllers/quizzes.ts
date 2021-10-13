@@ -20,6 +20,25 @@ export const getQuizzes = async (
   return res.json(quizzes);
 };
 
+export const getQuizByCode = async (
+  req: Request,
+  res: Response,
+): Promise<Response> => {
+  const quiz = await Quiz.findOne({ code: req.params.quizCode }).populate({
+    path: "questions",
+    populate: {
+      path: "answers",
+      select: "-isCorrect", // We hide the isCorrect field so the user can't know the correct answer from the frontend
+    },
+  });
+
+  if (!quiz) {
+    return res.status(404).json("Quiz not found!");
+  }
+
+  return res.json(quiz);
+};
+
 export const createQuiz = async (
   req: Request,
   res: Response,
