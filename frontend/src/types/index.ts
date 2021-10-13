@@ -30,3 +30,16 @@ export interface CreateQuizState {
   quizID: string;
   errorMessage: string;
 }
+
+// Quiz
+export interface Quiz {
+  id: string;
+  title: string;
+  code: string;
+  questions: Array<Question>;
+}
+
+export interface QuizState {
+  quiz: Quiz | null;
+  isLoading: boolean;
+}

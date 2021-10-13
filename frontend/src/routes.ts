@@ -1,4 +1,8 @@
-import { CreateQuizPage, LandingPage } from "src/pages/page-list-async";
+import {
+  QuizPage,
+  CreateQuizPage,
+  LandingPage,
+} from "src/pages/page-list-async";
 
 export const routes = [
   {
@@ -9,6 +13,11 @@ export const routes = [
   {
     component: CreateQuizPage,
     path: "/create",
+    exact: false,
+  },
+  {
+    component: QuizPage,
+    path: "/quiz/:quizCode",
     exact: false,
   },
 ];
