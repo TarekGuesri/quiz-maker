@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppThunk, RootState } from "src/redux/store";
+import { AppThunk } from "src/redux/store";
 import { QuizState, Quiz } from "src/types";
 
 const initialState: QuizState = {
@@ -15,7 +15,8 @@ export const quizSlice = createSlice({
   initialState,
   reducers: {
     setQuiz: (state, action: PayloadAction<Quiz>) => {
-      console.log(action.payload);
+      state.quiz = { ...action.payload };
+      state.isLoading = false;
     },
     getQuizFail: (state, action: PayloadAction<string>) => {
       state.errorMessage = action.payload;
@@ -28,11 +29,12 @@ export const { setQuiz, getQuizFail } = quizSlice.actions;
 
 export const getQuizByCode =
   (quizCode: string): AppThunk =>
-  async (dispatch, getState) => {
+  async (dispatch) => {
     console.log(quizCode);
     try {
       const res: AxiosResponse = await axios.get(`quizzes/${quizCode}`);
-      console.log(res.data);
+
+      dispatch(setQuiz(res.data));
     } catch (error) {
       const { response } = error as AxiosError;
 
