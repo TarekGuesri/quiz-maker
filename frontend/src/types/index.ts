@@ -42,4 +42,6 @@ export interface Quiz {
 export interface QuizState {
   quiz: Quiz | null;
   isLoading: boolean;
+  quizStarted: boolean;
+  errorMessage: string;
 }
