@@ -41,7 +41,7 @@ const Quiz: React.FC = () => {
 
   return (
     <CardBox>
-      <Typography color="secondary" variant="h5" component="div" mb={1}>
+      <Typography color="secondary" variant="h4" component="div" mb={1}>
         {quiz?.title}
       </Typography>
       <Box mt={3}>{!quizStarted ? <QuizIntro /> : <>QuizStarted</>}</Box>
