@@ -22,10 +22,25 @@ const Quiz: React.FC = () => {
     return <Loading />;
   }
 
+  if (errorMessage) {
+    return (
+      <CardBox>
+        <Typography color="secondary" variant="h5" component="div" mb={3}>
+          {errorMessage}
+        </Typography>
+        {errorMessage === "Quiz not found!" && (
+          <Typography component="div">
+            Wrong link or quiz has been deleted!
+          </Typography>
+        )}
+      </CardBox>
+    );
+  }
+
   return (
     <CardBox>
-      <Typography variant="h5" component="div" mb={1}>
-        Quiz Title
+      <Typography color="secondary" variant="h5" component="div" mb={1}>
+        {quiz?.title}
       </Typography>
       {!quizStarted ? <QuizIntro /> : <>QuizStarted</>}
     </CardBox>
