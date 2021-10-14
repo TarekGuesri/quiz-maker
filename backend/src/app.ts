@@ -5,7 +5,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import hpp from "hpp";
 import rateLimit from "express-rate-limit";
-import mongoSanitize from "express-rate-limit";
+import mongoSanitize from "express-mongo-sanitize";
 
 import { connectDB } from "./config/db";
 import { restRouter } from "./routes/rest";

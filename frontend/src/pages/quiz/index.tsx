@@ -63,7 +63,7 @@ const Quiz: React.FC = () => {
 
         <Fade
           in={quizStarted}
-          style={{ transitionDelay: "1000ms" }}
+          style={{ transitionDelay: "400ms" }}
           mountOnEnter
           unmountOnExit
         >
