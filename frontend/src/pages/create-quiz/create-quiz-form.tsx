@@ -110,7 +110,7 @@ export const CreateQuizForm: React.FC = ({}) => {
 
   return (
     <>
-      <Typography variant="h5" component="div" mb={4}>
+      <Typography color="secondary" variant="h5" component="div" mb={4}>
         Create a quiz
       </Typography>
 
