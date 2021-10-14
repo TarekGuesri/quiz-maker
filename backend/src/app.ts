@@ -28,12 +28,13 @@ app.use(helmet());
 app.use(hpp());
 
 // Limiting each IP to 100 requests per windowMs
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100,
-});
 
 if (process.env.NODE_ENV === "prodcution") {
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100,
+  });
+
   app.use(limiter);
 }
 

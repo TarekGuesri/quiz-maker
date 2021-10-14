@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "src/redux/hooks";
 import Box from "@mui/material/Box";
+import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { CardBox } from "src/components/cards/card-box";
 import { store } from "src/redux/store";
@@ -13,6 +14,7 @@ const Quiz: React.FC = () => {
   const { quiz, isLoading, quizStarted, errorMessage } = useAppSelector(
     (state) => state.quiz,
   );
+
   const { quizCode } = useParams<{ quizCode: string }>();
 
   // Getting quiz
@@ -44,7 +46,33 @@ const Quiz: React.FC = () => {
       <Typography color="secondary" variant="h4" component="div" mb={1}>
         {quiz?.title}
       </Typography>
-      <Box mt={3}>{!quizStarted ? <QuizIntro /> : <>QuizStarted</>}</Box>
+      <Box mt={3}>
+        {!quizStarted ? (
+          <Fade
+            in={!quizStarted}
+            style={{ transitionDelay: "100ms" }}
+            mountOnEnter
+            unmountOnExit
+          >
+            <div>
+              <QuizIntro />
+            </div>
+          </Fade>
+        ) : (
+          <></>
+        )}
+
+        <Fade
+          in={quizStarted}
+          style={{ transitionDelay: "1000ms" }}
+          mountOnEnter
+          unmountOnExit
+        >
+          <div>
+            <>QuizStarted</>
+          </div>
+        </Fade>
+      </Box>
     </CardBox>
   );
 };

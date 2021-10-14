@@ -22,10 +22,13 @@ export const quizSlice = createSlice({
       state.errorMessage = action.payload;
       state.isLoading = false;
     },
+    startQuiz: (state) => {
+      state.quizStarted = true;
+    },
   },
 });
 
-export const { setQuiz, getQuizFail } = quizSlice.actions;
+export const { setQuiz, getQuizFail, startQuiz } = quizSlice.actions;
 
 export const getQuizByCode =
   (quizCode: string): AppThunk =>
