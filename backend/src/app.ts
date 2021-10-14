@@ -32,7 +32,10 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100,
 });
-app.use(limiter);
+
+if (process.env.NODE_ENV === "prodcution") {
+  app.use(limiter);
+}
 
 // Sanitize data
 app.use(mongoSanitize());
