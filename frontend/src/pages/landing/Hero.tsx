@@ -28,7 +28,7 @@ export const Hero: React.FC = () => {
 
   return (
     <CardBox>
-      <Typography variant="h5" component="div" mb={4}>
+      <Typography color="secondary" variant="h5" component="div" mb={4}>
         Welcome to <span className={classes.brand}>QuizMaker</span>
       </Typography>
       <Typography variant="body1">
