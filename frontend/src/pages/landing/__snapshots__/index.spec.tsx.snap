@@ -10,7 +10,7 @@ exports[`src/pages/landing Render Landing component 1`] = `
         class="MuiCardContent-root makeStyles-cardContent-5 css-46bh2p-MuiCardContent-root"
       >
         <div
-          class="MuiTypography-root MuiTypography-h5 css-1j54lbx-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h5 css-93lkom-MuiTypography-root"
         >
           Welcome to 
           <span
