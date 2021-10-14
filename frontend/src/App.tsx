@@ -15,7 +15,7 @@ axios.defaults.baseURL = `${config.api.url}/rest`;
 const App: FC = () => {
   return (
     <Theme>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Navbar />
         <Switch>
           {routes.map((route, index) => (

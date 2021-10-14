@@ -38,7 +38,7 @@ export const QuizIntro: React.FC = () => {
       <div className={imageLoading ? "" : classes.ligthBulbBackground}>
         <img
           src={ligthBulbImage}
-          alt=""
+          alt="light-bulb-image"
           className={classes.ligthBulbImage}
           onLoad={() => setImageLoading(false)}
         />
