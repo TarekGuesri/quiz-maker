@@ -53,7 +53,6 @@ export const QuizIntro: React.FC = () => {
         color="primary"
         className={classes.button}
         onClick={() => store.dispatch(startQuiz())}
-        // disabled={questions.length < 2}
       >
         Start Quiz
       </Button>

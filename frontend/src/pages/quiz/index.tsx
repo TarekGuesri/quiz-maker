@@ -9,6 +9,7 @@ import { store } from "src/redux/store";
 import { getQuizByCode } from "src/redux/quiz/quiz-slice";
 import { Loading } from "src/components/layout/loading";
 import { QuizIntro } from "./quiz-intro";
+import { QuizTest } from "./quiz-test";
 
 const Quiz: React.FC = () => {
   const { quiz, isLoading, quizStarted, errorMessage } = useAppSelector(
@@ -47,7 +48,7 @@ const Quiz: React.FC = () => {
         {quiz?.title}
       </Typography>
       <Box mt={3}>
-        {!quizStarted ? (
+        {!quizStarted && (
           <Fade
             in={!quizStarted}
             style={{ transitionDelay: "100ms" }}
@@ -58,8 +59,6 @@ const Quiz: React.FC = () => {
               <QuizIntro />
             </div>
           </Fade>
-        ) : (
-          <></>
         )}
 
         <Fade
@@ -69,7 +68,7 @@ const Quiz: React.FC = () => {
           unmountOnExit
         >
           <div>
-            <>QuizStarted</>
+            <QuizTest />
           </div>
         </Fade>
       </Box>

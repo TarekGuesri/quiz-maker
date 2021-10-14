@@ -43,5 +43,6 @@ export interface QuizState {
   quiz: Quiz | null;
   isLoading: boolean;
   quizStarted: boolean;
+  quizTimer: string;
   errorMessage: string;
 }
