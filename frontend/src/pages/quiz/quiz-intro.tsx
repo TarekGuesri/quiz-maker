@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
+import ligthBulbImage from "src/assets/images/quiz-light-bulb.png";
 
 const useStyles = makeStyles((theme: Theme) => ({
   ligthBulbImage: {
@@ -20,13 +21,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const QuizIntro: React.FC = () => {
   const classes = useStyles();
+  // We use this to hide div style (border and backround) when image is loading
+  const [imageLoading, setImageLoading] = useState(true);
+
   return (
     <>
-      <div className={classes.ligthBulbBackground}>
+      <div className={imageLoading ? "" : classes.ligthBulbBackground}>
         <img
-          src="https://cdn-icons.flaticon.com/png/512/3261/premium/3261308.png?token=exp=1634148994~hmac=cd3c4ae1c889fa44e37febffd98be9eb"
+          src={ligthBulbImage}
           alt=""
           className={classes.ligthBulbImage}
+          onLoad={() => setImageLoading(false)}
         />
       </div>
     </>

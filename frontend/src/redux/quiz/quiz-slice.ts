@@ -30,7 +30,6 @@ export const { setQuiz, getQuizFail } = quizSlice.actions;
 export const getQuizByCode =
   (quizCode: string): AppThunk =>
   async (dispatch) => {
-    console.log(quizCode);
     try {
       const res: AxiosResponse = await axios.get(`quizzes/${quizCode}`);
 
