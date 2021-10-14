@@ -15,6 +15,7 @@ export const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
+    resetState: () => initialState,
     setQuiz: (state, action: PayloadAction<Quiz>) => {
       state.quiz = { ...action.payload };
       state.isLoading = false;
@@ -32,7 +33,8 @@ export const quizSlice = createSlice({
   },
 });
 
-export const { setQuiz, getQuizFail, startQuiz } = quizSlice.actions;
+export const { setQuiz, getQuizFail, resetState, startQuiz } =
+  quizSlice.actions;
 
 export const getQuizByCode =
   (quizCode: string): AppThunk =>
