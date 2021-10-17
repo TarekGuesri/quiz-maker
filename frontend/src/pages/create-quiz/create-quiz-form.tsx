@@ -19,6 +19,7 @@ import Tooltip from "@mui/material/Tooltip";
 import {
   addQuestion,
   changeAnswer,
+  changeDescription,
   changeTitle,
   changePage,
   changeQuestion,
@@ -63,6 +64,7 @@ export const CreateQuizForm: React.FC = ({}) => {
   const dispatch = useAppDispatch();
   const {
     title,
+    description,
     questionIndex,
     questions,
     selectedAnswers,
@@ -89,6 +91,14 @@ export const CreateQuizForm: React.FC = ({}) => {
     const value = event.target.value;
 
     dispatch(changeTitle(value));
+  };
+
+  const handleChangeDescription = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const value = event.target.value;
+
+    dispatch(changeDescription(value));
   };
 
   const handleChangeQuestion = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,6 +135,19 @@ export const CreateQuizForm: React.FC = ({}) => {
             size="medium"
             fullWidth
             inputProps={{ "data-testid": "quiz-title" }}
+          />
+        </Grid>
+
+        <Grid item xs={12} mb={3}>
+          <TextField
+            value={description}
+            onChange={handleChangeDescription}
+            label="Quiz Description"
+            placeholder="Describe the general idea and the purpose of the quiz"
+            variant="outlined"
+            size="medium"
+            fullWidth
+            inputProps={{ "data-testid": "quiz-description" }}
           />
         </Grid>
 

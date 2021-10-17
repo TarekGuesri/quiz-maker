@@ -22,6 +22,7 @@ export interface Question {
 }
 export interface CreateQuizState {
   title: string;
+  description: string;
   questionIndex: number;
   questions: Array<Question>;
   selectedAnswers: Array<string>;

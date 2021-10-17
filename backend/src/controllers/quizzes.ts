@@ -49,8 +49,7 @@ export const createQuiz = async (
     return res.status(400).json({ errors: errors.array() });
   }
 
-  // console.log(req.body);
-  const { title, questions, selectedAnswers } = req.body;
+  const { title, description, questions, selectedAnswers } = req.body;
 
   // Looping through quesions
   for (let i = 0; i < questions.length; i++) {
@@ -90,6 +89,7 @@ export const createQuiz = async (
   // Creating Quiz
   await Quiz.create({
     title,
+    description,
     code,
     questions: createdQuestions,
   });

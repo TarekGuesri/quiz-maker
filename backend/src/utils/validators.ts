@@ -7,6 +7,11 @@ export const quizSchema: Schema = {
     notEmpty: true,
     escape: true,
   },
+  description: {
+    errorMessage: "Title can't be empty!",
+    isString: true,
+    escape: true,
+  },
   questions: {
     isArray: { options: { min: 1, max: 10 } },
     errorMessage: "Questions must be an array of a length between 1 and 10!",

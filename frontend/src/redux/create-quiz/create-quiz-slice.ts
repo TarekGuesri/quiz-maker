@@ -8,6 +8,7 @@ const firstAnswerID = uuidv4();
 
 const initialState: CreateQuizState = {
   title: "",
+  description: "",
   questionIndex: 0,
   questions: [
     {
@@ -70,6 +71,9 @@ export const createQuizSlice = createSlice({
     },
     changeTitle: (state, action: PayloadAction<string>) => {
       state.title = action.payload;
+    },
+    changeDescription: (state, action: PayloadAction<string>) => {
+      state.description = action.payload;
     },
     changeQuestion: (state, action: PayloadAction<string>) => {
       state.questions[state.questionIndex].content = action.payload;
@@ -156,6 +160,7 @@ export const {
   resetState,
   addQuestion,
   changeAnswer,
+  changeDescription,
   changeTitle,
   changePage,
   changeQuestion,
@@ -172,9 +177,8 @@ export const selectCeateQuiz = (state: RootState) => state.createQuiz;
 export const createQuiz = (): AppThunk => async (dispatch, getState) => {
   dispatch(validateForm());
 
-  const { title, questions, selectedAnswers, isValid } = selectCeateQuiz(
-    getState(),
-  );
+  const { title, description, questions, selectedAnswers, isValid } =
+    selectCeateQuiz(getState());
 
   // If the form is valid, we send a request to the api
   if (isValid) {
@@ -183,6 +187,7 @@ export const createQuiz = (): AppThunk => async (dispatch, getState) => {
     try {
       const res: AxiosResponse = await axios.post("quizzes", {
         title,
+        description,
         questions,
         selectedAnswers,
       });
