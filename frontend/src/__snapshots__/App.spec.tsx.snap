@@ -3,7 +3,7 @@
 exports[`src/entry/app.tsx Render App component 1`] = `
 <div>
   <div
-    class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
   >
     <div
       class="MuiBox-root css-1rcbgiz"

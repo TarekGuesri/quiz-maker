@@ -138,6 +138,7 @@ export const CreateQuizForm: React.FC = ({}) => {
           />
         </Grid>
 
+        {/* Quiz Description */}
         <Grid item xs={12} mb={3}>
           <TextField
             value={description}

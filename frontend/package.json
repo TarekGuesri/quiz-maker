@@ -2,12 +2,13 @@
   "name": "quiz-maker-frontend",
   "version": "0.1.0",
   "private": true,
-  "jest": {
+  "jest": {    
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "src/index.tsx",
       "src/pages/page-list-async.tsx"
-    ]
+    ],
+    "coverageReporters": ["json", "html"]
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -49,7 +50,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:cov": "yarn test --coverage --watchAll=false",
+    "test:cov": "yarn test --coverage --watchAll",
     "eject": "react-scripts eject",
     "eslint:check": "eslint \"src/**/*.*\" --report-unused-disable-directives",
     "eslint:fix": "eslint \"**/*.*\" --quiet --fix"

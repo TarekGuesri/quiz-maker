@@ -3,10 +3,10 @@
 exports[`src/pages/create-quiz/Hero.tsx Render Hero component 1`] = `
 <div>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root makeStyles-root-4 css-4nwtfp-MuiPaper-root-MuiCard-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root makeStyles-root-6 css-4nwtfp-MuiPaper-root-MuiCard-root"
   >
     <div
-      class="MuiCardContent-root makeStyles-cardContent-5 css-46bh2p-MuiCardContent-root"
+      class="MuiCardContent-root makeStyles-cardContent-7 css-46bh2p-MuiCardContent-root"
     >
       <div
         class="MuiTypography-root MuiTypography-h5 css-93lkom-MuiTypography-root"
@@ -19,10 +19,19 @@ exports[`src/pages/create-quiz/Hero.tsx Render Hero component 1`] = `
         </span>
       </div>
       <p
-        class="MuiTypography-root MuiTypography-body1 css-jqqqr0-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-1clpbiw-MuiTypography-root"
       >
-        Here you can make your own quizzes and share them with friends!
+        Here you can make your own quizzes and share them with others!
       </p>
+      <div
+        class="makeStyles-onlineTestBackground-5"
+      >
+        <img
+          alt=""
+          class="makeStyles-onlineTestImage-4"
+          src="online-test.svg"
+        />
+      </div>
       <div
         class="makeStyles-actionBox-3 MuiBox-root css-0"
       >
@@ -30,7 +39,7 @@ exports[`src/pages/create-quiz/Hero.tsx Render Hero component 1`] = `
           href="/create"
         >
           <button
-            class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButtonBase-root css-17gny3x-MuiButtonBase-root-MuiButton-root"
+            class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButtonBase-root makeStyles-button-2 css-17gny3x-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >

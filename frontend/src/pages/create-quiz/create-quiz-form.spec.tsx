@@ -64,6 +64,13 @@ describe("src/components/create-quiz-form.tsx", () => {
     fireEvent.change(quizTitleInput, { target: { value: "React Quiz" } });
     expect(quizTitleInput).toHaveDisplayValue("React Quiz");
 
+    // Quiz title
+    const quizDescriptionInput = screen.getByTestId("quiz-description");
+    fireEvent.change(quizDescriptionInput, {
+      target: { value: "Description" },
+    });
+    expect(quizDescriptionInput).toHaveDisplayValue("Description");
+
     // Question content
     const questionContentInput = screen.getByTestId("question-content");
     fireEvent.change(questionContentInput, {
