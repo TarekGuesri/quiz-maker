@@ -1,3 +1,7 @@
 export const trimmer = (text: string): string => {
-  return text.trim();
+  if (text) {
+    return text.trim();
+  } else {
+    return text;
+  }
 };

@@ -4,13 +4,25 @@ import { trimmer } from "./helpers";
 export const quizSchema: Schema = {
   title: {
     errorMessage: "Title can't be empty!",
+    isString: true,
     notEmpty: true,
     escape: true,
+    customSanitizer: {
+      options: (value) => {
+        return trimmer(value);
+      },
+    },
   },
   description: {
-    errorMessage: "Title can't be empty!",
+    errorMessage: "Description can't be empty!",
+    optional: true,
     isString: true,
     escape: true,
+    customSanitizer: {
+      options: (value) => {
+        return trimmer(value);
+      },
+    },
   },
   questions: {
     isArray: { options: { min: 1, max: 10 } },
@@ -18,6 +30,7 @@ export const quizSchema: Schema = {
   },
   "questions.*.content": {
     errorMessage: "Question content can't be empty!",
+    isString: true,
     customSanitizer: {
       options: (value) => {
         return trimmer(value);

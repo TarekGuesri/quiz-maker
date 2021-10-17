@@ -59,6 +59,7 @@ describe("src/routes/rest/quizzes.ts", () => {
 
     const formData = {
       title: "Test Quiz",
+      description: "Description",
       questions: [
         {
           content: "",
