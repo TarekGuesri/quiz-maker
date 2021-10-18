@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { validationResult } from "express-validator";
 import shortid from "shortid";
 
+import { asyncHandler } from "../middleware/async";
 import Answer from "../models/Answer";
 import Question from "../models/Question";
 import Quiz from "../models/Quiz";
@@ -39,10 +40,7 @@ export const getQuizByCode = async (
   return res.json(quiz);
 };
 
-export const createQuiz = async (
-  req: Request,
-  res: Response,
-): Promise<Response> => {
+export const createQuiz = asyncHandler(async (req: Request, res: Response) => {
   // Validation
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -95,4 +93,4 @@ export const createQuiz = async (
   });
 
   return res.json(code);
-};
+});

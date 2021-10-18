@@ -9,6 +9,7 @@ import mongoSanitize from "express-mongo-sanitize";
 
 import { connectDB } from "./config/db";
 import { restRouter } from "./routes/rest";
+import { errorHandler } from "./middleware/error";
 
 // Load env vars
 dotenv.config();
@@ -56,3 +57,5 @@ if (process.env.NODE_ENV === "development") {
 
 // Defining Routes
 app.use("/rest", restRouter);
+
+app.use(errorHandler);
