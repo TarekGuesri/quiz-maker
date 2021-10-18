@@ -1,58 +1,52 @@
-import React from "react";
-import ReactStopwatch from "react-stopwatch";
-
-import { makeStyles } from "@mui/styles";
-
-import { Theme } from "@mui/material";
-
-const useStyles = makeStyles((theme: Theme) => ({
-  ligthBulbImage: {
-    width: "75px",
-    [theme.breakpoints.down("md")]: {
-      width: "50px",
-    },
-  },
-  ligthBulbBackground: {
-    border: `9px solid ${theme.palette.secondary.main}`,
-    backgroundColor: `${theme.palette.primary.main}`,
-    display: "inline-flex",
-    padding: "18px",
-    borderRadius: "100px",
-    marginBottom: theme.spacing(4),
-  },
-  button: {
-    width: "150px",
-    padding: "10px",
-  },
-}));
+import React, { useState, useEffect } from "react";
+import { useAppSelector } from "src/redux/hooks";
+import { store } from "src/redux/store";
+import { changeTimer } from "src/redux/quiz/quiz-slice";
+import { timeFormatter } from "src/utils/helpers";
 
 export const Timer: React.FC = () => {
-  const classes = useStyles();
+  const { quizTimer } = useAppSelector((state) => state.quiz);
 
-  return (
-    <ReactStopwatch
-      seconds={0}
-      minutes={0}
-      hours={0}
-      onChange={({
-        hours,
-        minutes,
-        seconds,
-      }: {
-        hours: number;
-        minutes: number;
-        seconds: number;
-      }) => {
-        // console.log({ hours, minutes, seconds });
-      }}
-      onCallback={() => console.log("Finish")}
-      render={({ formatted }: { formatted: string }) => {
-        return (
-          <div>
-            <p>Formatted: {formatted}</p>
-          </div>
-        );
-      }}
-    />
-  );
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [hours, setHours] = useState(0);
+
+  const increaseTimer = () => {
+    let _seconds = seconds;
+    let _minutes = minutes;
+    let _hours = hours;
+
+    if (_seconds < 60) {
+      setSeconds(_seconds + 1);
+      _seconds += 1;
+    }
+
+    if (_seconds === 60) {
+      setSeconds(0);
+
+      if (_minutes < 59) {
+        setMinutes(_minutes + 1);
+        _minutes += 1;
+      } else {
+        setMinutes(0);
+        setHours(_hours + 1);
+        _minutes = 0;
+        _hours += 1;
+      }
+    }
+
+    const time = timeFormatter(_seconds, _minutes, _hours);
+    store.dispatch(changeTimer(time));
+  };
+
+  useEffect(() => {
+    const myInterval = setInterval(() => {
+      increaseTimer();
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  });
+
+  return <>{quizTimer}</>;
 };

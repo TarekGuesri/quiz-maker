@@ -7,7 +7,7 @@ const initialState: QuizState = {
   quiz: null,
   isLoading: true,
   quizStarted: false,
-  quizTimer: "00:00:00",
+  quizTimer: "00:00",
   errorMessage: "",
 };
 
@@ -28,12 +28,12 @@ export const quizSlice = createSlice({
       state.quizStarted = true;
     },
     changeTimer: (state, action: PayloadAction<string>) => {
-      state.quizStarted = true;
+      state.quizTimer = action.payload;
     },
   },
 });
 
-export const { setQuiz, getQuizFail, resetState, startQuiz } =
+export const { changeTimer, setQuiz, getQuizFail, resetState, startQuiz } =
   quizSlice.actions;
 
 export const getQuizByCode =

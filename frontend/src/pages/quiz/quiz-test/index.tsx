@@ -26,7 +26,9 @@ export const QuizTest: React.FC = () => {
 
   return (
     <>
-      <Timer />
+      <h1>
+        <Timer />
+      </h1>
 
       <Typography mb={4}>
         To get started with the quiz, click on the button below
