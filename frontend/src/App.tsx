@@ -4,6 +4,7 @@ import axios from "axios";
 import { Route, Switch } from "react-router-dom";
 import Container from "@mui/material/Container";
 import { Navbar } from "src/components/layout/navbar";
+import { Footer } from "src/components/layout/footer";
 import { Theme } from "src/components/theme";
 import { config } from "src/config";
 
@@ -27,6 +28,7 @@ const App: FC = () => {
             />
           ))}
         </Switch>
+        <Footer />
       </Container>
     </Theme>
   );

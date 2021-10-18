@@ -46,11 +46,8 @@ export const Hero: React.FC = () => {
 
   return (
     <CardBox>
-      <Typography color="secondary" variant="h5" component="div" mb={4}>
-        Welcome to <span className={classes.brand}>QuizMaker</span>
-      </Typography>
-      <Typography variant="body1" mb={3}>
-        Here you can make your own quizzes and share them with others!
+      <Typography variant="h5" mb={3}>
+        Make your own quizzes and share them with others!
       </Typography>
 
       <div className={classes.onlineTestBackground}>

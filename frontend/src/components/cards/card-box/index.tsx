@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       textAlign: "center",
       borderRadius: theme.spacing(2),
+      [theme.breakpoints.up("sm")]: {
+        padding: theme.spacing(3),
+      },
     },
     cardContent: {
       padding: theme.spacing(4),
