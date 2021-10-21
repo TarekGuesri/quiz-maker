@@ -6,7 +6,7 @@ interface ErrorValue {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
+export const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   let error = { ...err };
 
   error.message = err.message;
@@ -28,10 +28,6 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
 
   // Mongoose validation error
   if (err.name === "ValidationError") {
-    // console.log(err.errors);
-
-    // const message = Object.values(err.errors).map((val) => val.message);
-
     const errors: ErrorValue = err.errors;
 
     const messages = Object.values(errors).map(
