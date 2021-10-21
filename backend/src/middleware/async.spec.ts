@@ -15,9 +15,9 @@ const testFunction = asyncHandler(
 );
 
 const mockRequest = (body: unknown): Request => {
-  const res = { body } as unknown as Request;
+  const req = { body } as unknown as Request;
 
-  return res;
+  return req;
 };
 
 const mockResponse = (): Response => {
