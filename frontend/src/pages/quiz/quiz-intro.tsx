@@ -28,7 +28,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const QuizIntro: React.FC = () => {
+interface QuizIntroProps {
+  description: string | undefined;
+}
+
+export const QuizIntro: React.FC<QuizIntroProps> = ({ description }) => {
   const classes = useStyles();
   // We use this to hide div style (border and backround) when image is loading
   const [imageLoading, setImageLoading] = useState(true);
@@ -45,7 +49,7 @@ export const QuizIntro: React.FC = () => {
       </div>
 
       <Typography mb={4}>
-        To get started with the quiz, click on the button below
+        {description || "This quiz doesn't have a descirption."}
       </Typography>
 
       <Button

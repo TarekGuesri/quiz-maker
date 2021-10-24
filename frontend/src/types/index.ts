@@ -36,6 +36,7 @@ export interface CreateQuizState {
 export interface Quiz {
   id: string;
   title: string;
+  description?: string;
   code: string;
   questions: Array<Question>;
 }

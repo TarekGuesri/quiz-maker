@@ -56,7 +56,7 @@ const Quiz: React.FC = () => {
             unmountOnExit
           >
             <div>
-              <QuizIntro />
+              <QuizIntro description={quiz?.description} />
             </div>
           </Fade>
         )}
