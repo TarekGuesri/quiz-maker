@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 
 import { makeStyles } from "@mui/styles";
-import Typography from "@mui/material/Typography";
+
 import Button from "@mui/material/Button";
 import { Theme } from "@mui/material";
 import { store } from "src/redux/store";
 import { startQuiz, resetState } from "src/redux/quiz/quiz-slice";
 import { Timer } from "./timer";
+import { Progress } from "./progress";
 
 const useStyles = makeStyles((theme: Theme) => ({
   button: {
@@ -26,13 +27,9 @@ export const QuizTest: React.FC = () => {
 
   return (
     <>
-      <h1>
-        <Timer />
-      </h1>
+      <Timer />
 
-      <Typography mb={4}>
-        To get started with the quiz, click on the button below
-      </Typography>
+      <Progress />
 
       <Button
         variant="contained"

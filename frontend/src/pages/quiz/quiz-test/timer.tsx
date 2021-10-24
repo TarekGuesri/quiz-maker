@@ -48,5 +48,5 @@ export const Timer: React.FC = () => {
     };
   });
 
-  return <>{quizTimer}</>;
+  return <h2>{quizTimer}</h2>;
 };
