@@ -10,8 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: theme.palette.primary.main,
     color: "#fff",
     marginBottom: theme.spacing(4),
-    borderRadius: "12px",
-    padding: theme.spacing(2),
+    borderRadius: "20px",
   },
   cardContent: {
     "&:last-child": {
@@ -20,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const Question: React.FC = () => {
+export const Answers: React.FC = () => {
   const classes = useStyles();
 
   return (

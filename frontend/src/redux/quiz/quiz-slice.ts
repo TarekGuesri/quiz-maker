@@ -4,7 +4,9 @@ import { AppThunk } from "src/redux/store";
 import { QuizState, Quiz } from "src/types";
 
 const initialState: QuizState = {
-  quiz: null,
+  quiz: {} as Quiz,
+  questionIndex: 0,
+  selectedAnswers: [],
   isLoading: true,
   quizStarted: false,
   quizTimer: "00:00",
@@ -30,11 +32,22 @@ export const quizSlice = createSlice({
     changeTimer: (state, action: PayloadAction<string>) => {
       state.quizTimer = action.payload;
     },
+    nextQuestion: (state) => {
+      if (state.questionIndex + 1 < state.quiz.questions.length) {
+        state.questionIndex++;
+      }
+    },
   },
 });
 
-export const { changeTimer, setQuiz, getQuizFail, resetState, startQuiz } =
-  quizSlice.actions;
+export const {
+  changeTimer,
+  setQuiz,
+  getQuizFail,
+  resetState,
+  startQuiz,
+  nextQuestion,
+} = quizSlice.actions;
 
 export const getQuizByCode =
   (quizCode: string): AppThunk =>

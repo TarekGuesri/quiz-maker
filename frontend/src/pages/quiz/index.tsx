@@ -45,7 +45,7 @@ const Quiz: React.FC = () => {
   return (
     <CardBox>
       <Typography color="secondary" variant="h4" component="div" mb={1}>
-        {quiz?.title}
+        {quiz.title}
       </Typography>
       <Box mt={3}>
         {!quizStarted && (
@@ -56,7 +56,7 @@ const Quiz: React.FC = () => {
             unmountOnExit
           >
             <div>
-              <QuizIntro description={quiz?.description} />
+              <QuizIntro description={quiz.description} />
             </div>
           </Fade>
         )}

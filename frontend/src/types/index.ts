@@ -16,7 +16,7 @@ export interface QuestionAnswer {
   text: string;
 }
 export interface Question {
-  id: string;
+  id?: string;
   content: string;
   answers: [QuestionAnswer, QuestionAnswer, QuestionAnswer, QuestionAnswer];
 }
@@ -42,7 +42,9 @@ export interface Quiz {
 }
 
 export interface QuizState {
-  quiz: Quiz | null;
+  quiz: Quiz;
+  questionIndex: number;
+  selectedAnswers: Array<string>;
   isLoading: boolean;
   quizStarted: boolean;
   quizTimer: string;
