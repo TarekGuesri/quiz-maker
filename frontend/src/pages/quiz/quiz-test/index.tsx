@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Fade from "@mui/material/Fade";
-import { nextQuestion, selectAnswer } from "src/redux/quiz/quiz-slice";
+import { nextQuestion } from "src/redux/quiz/quiz-slice";
 
 import { Timer } from "./timer";
 import { Progress } from "./progress";
