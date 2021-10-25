@@ -172,13 +172,13 @@ export const {
   createQuizFail,
 } = createQuizSlice.actions;
 
-export const selectCeateQuiz = (state: RootState) => state.createQuiz;
+export const selectCreateQuiz = (state: RootState) => state.createQuiz;
 
 export const createQuiz = (): AppThunk => async (dispatch, getState) => {
   dispatch(validateForm());
 
   const { title, description, questions, selectedAnswers, isValid } =
-    selectCeateQuiz(getState());
+    selectCreateQuiz(getState());
 
   // If the form is valid, we send a request to the api
   if (isValid) {

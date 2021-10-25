@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Fade from "@mui/material/Fade";
-import { nextQuestion } from "src/redux/quiz/quiz-slice";
+import { nextQuestion, getQuizResult } from "src/redux/quiz/quiz-slice";
 
 import { Timer } from "./timer";
 import { Progress } from "./progress";
@@ -26,8 +26,6 @@ export const QuizTest: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const { questions } = quiz;
-
-  console.log(selectedAnswers[questionIndex]);
 
   return (
     <>
@@ -62,15 +60,27 @@ export const QuizTest: React.FC = () => {
         ))}
       </Box>
 
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        onClick={() => dispatch(nextQuestion())}
-        // disabled={questions.length < 2}
-      >
-        Next
-      </Button>
+      {questionIndex + 1 >= questions.length ? (
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          onClick={() => dispatch(getQuizResult())}
+          disabled={!selectedAnswers[questionIndex]}
+        >
+          Submit
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          onClick={() => dispatch(nextQuestion())}
+          disabled={!selectedAnswers[questionIndex]}
+        >
+          Next
+        </Button>
+      )}
     </>
   );
 };

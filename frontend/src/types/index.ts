@@ -48,5 +48,7 @@ export interface QuizState {
   isLoading: boolean;
   quizStarted: boolean;
   quizTimer: string;
+  isSubmitting: boolean;
+  quizResult: number;
   errorMessage: string;
 }

@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppThunk } from "src/redux/store";
+import { AppThunk, RootState } from "src/redux/store";
 import { QuizState, Quiz } from "src/types";
 
 const initialState: QuizState = {
@@ -10,6 +10,8 @@ const initialState: QuizState = {
   isLoading: true,
   quizStarted: false,
   quizTimer: "00:00",
+  isSubmitting: false,
+  quizResult: -1, // After getting the result from backend, it becomes 0 or higher
   errorMessage: "",
 };
 
@@ -53,6 +55,8 @@ export const {
   selectAnswer,
 } = quizSlice.actions;
 
+export const selectQuiz = (state: RootState) => state.quiz;
+
 export const getQuizByCode =
   (quizCode: string): AppThunk =>
   async (dispatch) => {
@@ -68,5 +72,20 @@ export const getQuizByCode =
       dispatch(getQuizFail(errorMessage));
     }
   };
+
+export const getQuizResult = (): AppThunk => async (dispatch, getState) => {
+  const { quiz } = selectQuiz(getState());
+  try {
+    const res: AxiosResponse = await axios.post(`quizzes/result/${quiz.code}`);
+
+    console.log(res.data);
+  } catch (error) {
+    const { response } = error as AxiosError;
+
+    const errorMessage = response?.data || "Something unexpected happend!";
+
+    dispatch(getQuizFail(errorMessage));
+  }
+};
 
 export default quizSlice.reducer;
