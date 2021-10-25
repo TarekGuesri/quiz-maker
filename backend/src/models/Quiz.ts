@@ -40,6 +40,10 @@ const QuizSchema: Schema = new Schema<QuizDocument>(
   { timestamps: true },
 );
 
+QuizSchema.set("toJSON", {
+  virtuals: true,
+});
+
 const Quiz = model<QuizDocument>("Quiz", QuizSchema);
 
 export default Quiz;

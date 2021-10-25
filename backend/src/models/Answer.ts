@@ -18,6 +18,10 @@ const AnswerSchema: Schema = new Schema<AnswerDocument>({
   },
 });
 
+AnswerSchema.set("toJSON", {
+  virtuals: true,
+});
+
 const Answer = model<AnswerDocument>("Answer", AnswerSchema);
 
 export default Answer;

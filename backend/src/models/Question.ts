@@ -24,6 +24,10 @@ const QuestionSchema: Schema = new Schema<QuestionDocument>({
   },
 });
 
+QuestionSchema.set("toJSON", {
+  virtuals: true,
+});
+
 const Question = model<QuestionDocument>("Question", QuestionSchema);
 
 export default Question;
