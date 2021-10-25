@@ -1,17 +1,17 @@
 import React from "react";
 import { useAppSelector, useAppDispatch } from "src/redux/hooks";
 import { makeStyles } from "@mui/styles";
-import { Theme } from "@mui/material";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Fade from "@mui/material/Fade";
-import { nextQuestion } from "src/redux/quiz/quiz-slice";
+import { nextQuestion, selectAnswer } from "src/redux/quiz/quiz-slice";
 
 import { Timer } from "./timer";
 import { Progress } from "./progress";
 import { Question } from "./question";
 import { Answers } from "./answers";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   button: {
     width: "115px",
     padding: "10px",
@@ -27,30 +27,37 @@ export const QuizTest: React.FC = () => {
 
   const { questions } = quiz;
 
+  console.log(selectedAnswers[questionIndex]);
+
   return (
     <>
       <Timer />
 
       <Progress />
 
-      {questions.map((question, index) => (
-        <Fade
-          key={question.id}
-          in={questionIndex === index}
-          style={{
-            transitionDelay: "300ms",
-            display: questionIndex !== index ? "none" : "block",
-          }}
-          mountOnEnter
-          unmountOnExit
-        >
-          <div>
-            <Question />
+      <Box mb={4}>
+        {questions.map((question, index) => (
+          <Fade
+            key={question.id}
+            in={questionIndex === index}
+            style={{
+              transitionDelay: "300ms",
+              display: questionIndex !== index ? "none" : "block",
+            }}
+            mountOnEnter
+            unmountOnExit
+          >
+            <div>
+              <Question />
 
-            <Answers />
-          </div>
-        </Fade>
-      ))}
+              <Answers
+                answers={question.answers}
+                selectedAnswer={selectedAnswers[index]}
+              />
+            </div>
+          </Fade>
+        ))}
+      </Box>
 
       <Button
         variant="contained"

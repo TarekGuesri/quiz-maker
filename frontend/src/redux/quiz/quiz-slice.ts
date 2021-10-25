@@ -37,6 +37,9 @@ export const quizSlice = createSlice({
         state.questionIndex++;
       }
     },
+    selectAnswer: (state, action: PayloadAction<string>) => {
+      state.selectedAnswers[state.questionIndex] = action.payload;
+    },
   },
 });
 
@@ -47,6 +50,7 @@ export const {
   resetState,
   startQuiz,
   nextQuestion,
+  selectAnswer,
 } = quizSlice.actions;
 
 export const getQuizByCode =
