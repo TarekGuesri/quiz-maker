@@ -20,13 +20,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const Question: React.FC = () => {
+interface QuestionProps {
+  content: string;
+}
+
+export const Question: React.FC<QuestionProps> = ({ content }) => {
   const classes = useStyles();
 
   return (
     <Card sx={{ minWidth: 275 }} className={classes.root}>
       <CardContent className={classes.cardContent}>
-        <Typography variant="body1">well meaning and kindly.</Typography>
+        <Typography variant="body1">{content}</Typography>
       </CardContent>
     </Card>
   );

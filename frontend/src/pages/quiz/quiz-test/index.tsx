@@ -33,9 +33,12 @@ export const QuizTest: React.FC = () => {
     <>
       <Timer />
 
-      <Progress />
+      <Progress
+        currentQuestion={questionIndex + 1}
+        totalQuestions={questions.length}
+      />
 
-      <Box mb={4}>
+      <Box mb={3}>
         {questions.map((question, index) => (
           <Fade
             key={question.id}
@@ -48,7 +51,7 @@ export const QuizTest: React.FC = () => {
             unmountOnExit
           >
             <div>
-              <Question />
+              <Question content={question.content} />
 
               <Answers
                 answers={question.answers}

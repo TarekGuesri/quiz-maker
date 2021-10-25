@@ -74,7 +74,7 @@ export const Answers: React.FC<AnswersProps> = ({
             onClick={() => dispatch(selectAnswer(answer.id))}
           >
             <CardContent className={classes.cardContent}>
-              <Typography variant="body1">well meaning and kindly.</Typography>
+              <Typography variant="body1">{answer.text}</Typography>
             </CardContent>
           </Card>
         </ButtonBase>

@@ -3,12 +3,22 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-const progress = 10;
+interface ProgressProps {
+  currentQuestion: number;
+  totalQuestions: number;
+}
 
-export const Progress: React.FC = () => {
+export const Progress: React.FC<ProgressProps> = ({
+  currentQuestion,
+  totalQuestions,
+}) => {
+  const progress = (100 * currentQuestion) / totalQuestions;
+
   return (
     <>
-      <Typography mb={2}>Question 1/6</Typography>
+      <Typography mb={2}>
+        Question {`${currentQuestion}/${totalQuestions}`}
+      </Typography>
       <Box mx="auto" sx={{ width: "100%" }} mb={4}>
         <LinearProgress variant="determinate" value={progress} />
       </Box>
