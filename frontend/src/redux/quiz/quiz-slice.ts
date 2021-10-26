@@ -42,6 +42,17 @@ export const quizSlice = createSlice({
     selectAnswer: (state, action: PayloadAction<string>) => {
       state.selectedAnswers[state.questionIndex] = action.payload;
     },
+    setSubmitting: (state) => {
+      state.isSubmitting = true;
+    },
+    submitFail: (state, action: PayloadAction<string>) => {
+      state.errorMessage = action.payload;
+      state.isSubmitting = false;
+    },
+    submitSuccess: (state, action: PayloadAction<number>) => {
+      state.quizResult = action.payload;
+      state.isSubmitting = false;
+    },
   },
 });
 
@@ -53,6 +64,9 @@ export const {
   startQuiz,
   nextQuestion,
   selectAnswer,
+  setSubmitting,
+  submitFail,
+  submitSuccess,
 } = quizSlice.actions;
 
 export const selectQuiz = (state: RootState) => state.quiz;
@@ -74,17 +88,22 @@ export const getQuizByCode =
   };
 
 export const getQuizResult = (): AppThunk => async (dispatch, getState) => {
-  const { quiz } = selectQuiz(getState());
-  try {
-    const res: AxiosResponse = await axios.post(`quizzes/result/${quiz.code}`);
+  dispatch(setSubmitting());
 
-    console.log(res.data);
+  const { quiz, selectedAnswers } = selectQuiz(getState());
+
+  try {
+    const res: AxiosResponse = await axios.post(`quizzes/result/${quiz.code}`, {
+      selectedAnswers,
+    });
+
+    dispatch(submitSuccess(res.data));
   } catch (error) {
     const { response } = error as AxiosError;
 
     const errorMessage = response?.data || "Something unexpected happend!";
 
-    dispatch(getQuizFail(errorMessage));
+    dispatch(submitFail(errorMessage));
   }
 };
 
