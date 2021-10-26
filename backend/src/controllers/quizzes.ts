@@ -94,3 +94,15 @@ export const createQuiz = asyncHandler(async (req: Request, res: Response) => {
 
   return res.json(code);
 });
+
+export const getQuizResult = asyncHandler(
+  async (req: Request, res: Response) => {
+    // Validation
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    return res.json("success");
+  },
+);
