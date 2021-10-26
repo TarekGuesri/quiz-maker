@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { checkSchema } from "express-validator";
+import { check, checkSchema } from "express-validator";
 import { quizSchema } from "../../utils/validators";
 import {
   getQuizzes,
@@ -28,4 +28,8 @@ quizzesRouter.get("/:quizCode", getQuizByCode);
 // @route GET quizzes/result/:quizCode
 // @desc Gets a quiz result by code
 // @access Public
-quizzesRouter.post("/result/:quizCode", getQuizResult);
+quizzesRouter.post(
+  "/result/:quizCode",
+  check("selectedAnswers", "Selected answers must be an array").isArray(),
+  getQuizResult,
+);

@@ -3,8 +3,8 @@ import { validationResult } from "express-validator";
 import shortid from "shortid";
 
 import { asyncHandler } from "../middleware/async";
-import Answer from "../models/Answer";
-import Question from "../models/Question";
+import Answer, { AnswerDocument } from "../models/Answer";
+import Question, { QuestionDocument } from "../models/Question";
 import Quiz from "../models/Quiz";
 
 export const getQuizzes = async (
@@ -103,6 +103,42 @@ export const getQuizResult = asyncHandler(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    return res.json("success");
+    const quiz = await Quiz.findOne({ code: req.params.quizCode }).populate({
+      path: "questions",
+      populate: {
+        path: "answers",
+      },
+    });
+
+    if (!quiz) {
+      return res.status(404).json("Quiz not found!");
+    }
+
+    const { selectedAnswers } = req.body;
+    const { questions } = quiz;
+
+    let correctAnswersCount = 0;
+
+    questions.forEach((question: QuestionDocument, questionIndex: number) => {
+      // We check if the selected answer equals one of the answers, if yes, we increment the correctAnswers count
+      const { answers } = question;
+      for (let index = 0; index < answers.length; index++) {
+        const answer: AnswerDocument = answers[index];
+        const isSelected = selectedAnswers[questionIndex] === answer.id;
+
+        if (isSelected) {
+          // If the selected answer is correct, we increase the count
+          if (answer.isCorrect) {
+            correctAnswersCount++;
+          }
+
+          break;
+        }
+      }
+    });
+
+    const score = Math.round((100 * correctAnswersCount) / questions.length);
+
+    return res.json(score);
   },
 );
