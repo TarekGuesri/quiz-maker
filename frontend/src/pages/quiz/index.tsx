@@ -10,11 +10,17 @@ import { getQuizByCode } from "src/redux/quiz/quiz-slice";
 import { Loading } from "src/components/layout/loading";
 import { QuizIntro } from "./quiz-intro";
 import { QuizTest } from "./quiz-test";
+import { QuizResult } from "./quiz-result";
 
 const Quiz: React.FC = () => {
-  const { quiz, isLoading, quizStarted, errorMessage } = useAppSelector(
-    (state) => state.quiz,
-  );
+  const {
+    quiz,
+    isLoading,
+    isSubmitting,
+    quizStarted,
+    quizResult,
+    errorMessage,
+  } = useAppSelector((state) => state.quiz);
 
   const { quizCode } = useParams<{ quizCode: string }>();
 
@@ -23,7 +29,7 @@ const Quiz: React.FC = () => {
     store.dispatch(getQuizByCode(quizCode));
   }, []);
 
-  if (isLoading) {
+  if (isLoading || isSubmitting) {
     return <Loading />;
   }
 
@@ -38,6 +44,14 @@ const Quiz: React.FC = () => {
             Wrong link or quiz has been deleted!
           </Typography>
         )}
+      </CardBox>
+    );
+  }
+
+  if (quizResult >= 0) {
+    return (
+      <CardBox>
+        <QuizResult score={quizResult} />
       </CardBox>
     );
   }
