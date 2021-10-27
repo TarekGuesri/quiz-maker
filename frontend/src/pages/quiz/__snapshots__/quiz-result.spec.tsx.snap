@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/pages/quiz/quiz-result.tsx Render QuizResult component 1`] = `
+<div>
+  <div
+    class="MuiTypography-root MuiTypography-h4 css-mzhb8u-MuiTypography-root"
+  >
+    Quiz Result
+  </div>
+  <div
+    class="MuiBox-root css-1yjvs5a"
+  >
+    <div
+      class="MuiBox-root css-rmz4vk"
+    >
+      <span
+        aria-valuenow="100"
+        class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorSecondary css-5nap9f-MuiCircularProgress-root"
+        role="progressbar"
+        style="width: 160px; height: 160px; transform: rotate(-90deg);"
+      >
+        <svg
+          class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+            cx="44"
+            cy="44"
+            fill="none"
+            r="20.2"
+            stroke-width="3.6"
+            style="stroke-dasharray: 126.920; stroke-dashoffset: 0.000px;"
+          />
+        </svg>
+      </span>
+      <span
+        aria-valuenow="50"
+        class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorPrimary css-1pzb5l9-MuiCircularProgress-root"
+        role="progressbar"
+        style="width: 160px; height: 160px; transform: rotate(-90deg);"
+      >
+        <svg
+          class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+            cx="44"
+            cy="44"
+            fill="none"
+            r="20.2"
+            stroke-width="3.6"
+            style="stroke-dasharray: 126.920; stroke-dashoffset: 63.460px;"
+          />
+        </svg>
+      </span>
+      <div
+        class="MuiBox-root css-1o8dslu"
+      >
+        <div
+          class="MuiTypography-root MuiTypography-h4 css-1pxewg2-MuiTypography-root"
+        >
+          50%
+        </div>
+      </div>
+    </div>
+  </div>
+  <h6
+    class="MuiTypography-root MuiTypography-h6 css-1y2cxo8-MuiTypography-root"
+  >
+    You have completed the quiz.
+  </h6>
+  <h6
+    class="MuiTypography-root MuiTypography-h6 css-xq7e3s-MuiTypography-root"
+  >
+    You answered 
+    <strong>
+       
+      50
+      %
+    </strong>
+     of the questions correctly.
+  </h6>
+</div>
+`;
