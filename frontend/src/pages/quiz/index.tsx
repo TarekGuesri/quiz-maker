@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "src/redux/hooks";
+import { useAppSelector, useAppDispatch } from "src/redux/hooks";
 import Box from "@mui/material/Box";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { CardBox } from "src/components/cards/card-box";
-import { store } from "src/redux/store";
-import { getQuizByCode } from "src/redux/quiz/quiz-slice";
+import { resetState, getQuizByCode } from "src/redux/quiz/quiz-slice";
 import { Loading } from "src/components/layout/loading";
 import { QuizIntro } from "./quiz-intro";
 import { QuizTest } from "./quiz-test";
@@ -21,12 +20,14 @@ const Quiz: React.FC = () => {
     quizResult,
     errorMessage,
   } = useAppSelector((state) => state.quiz);
+  const dispatch = useAppDispatch();
 
   const { quizCode } = useParams<{ quizCode: string }>();
 
   // Getting quiz
   useEffect(() => {
-    store.dispatch(getQuizByCode(quizCode));
+    dispatch(resetState());
+    dispatch(getQuizByCode(quizCode));
   }, []);
 
   if (isLoading || isSubmitting) {
