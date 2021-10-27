@@ -16,11 +16,15 @@ export const Progress: React.FC<ProgressProps> = ({
 
   return (
     <>
-      <Typography mb={2}>
+      <Typography mb={2} data-testid="progress-text">
         Question {`${currentQuestion}/${totalQuestions}`}
       </Typography>
       <Box mx="auto" sx={{ width: "100%" }} mb={4}>
-        <LinearProgress variant="determinate" value={progress} />
+        <LinearProgress
+          variant="determinate"
+          value={progress}
+          data-testid="progress-bar"
+        />
       </Box>
     </>
   );

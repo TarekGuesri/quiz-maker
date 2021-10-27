@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/pages/quiz/quiz-test/progress.tsx Render Progress component 1`] = `
+<div>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-j4dx6n-MuiTypography-root"
+    data-testid="progress-text"
+  >
+    Question 
+    2/4
+  </p>
+  <div
+    class="MuiBox-root css-1rnc7yp"
+  >
+    <span
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="50"
+      class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-determinate css-1a1si9b-MuiLinearProgress-root"
+      data-testid="progress-bar"
+      role="progressbar"
+    >
+      <span
+        class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate css-2pg427-MuiLinearProgress-bar1"
+        style="transform: translateX(-50%);"
+      />
+    </span>
+  </div>
+</div>
+`;
