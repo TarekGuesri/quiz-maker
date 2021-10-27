@@ -24,7 +24,6 @@ export const CircularProgressWithLabel = (
         value={100}
       />
       <CircularProgress
-        disableShrink
         sx={{
           color: (theme) =>
             theme.palette.mode === "light"

@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/components/progress/circular-progress-with-label Render CircularProgressWithLabel component in dark mode 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-rmz4vk"
+  >
+    <span
+      aria-valuenow="100"
+      class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorSecondary css-185cjip-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 160px; height: 160px; transform: rotate(-90deg);"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+          style="stroke-dasharray: 126.920; stroke-dashoffset: 0.000px;"
+        />
+      </svg>
+    </span>
+    <span
+      aria-valuenow="50"
+      class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorPrimary css-1kz5d1-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 160px; height: 160px; transform: rotate(-90deg);"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+          style="stroke-dasharray: 126.920; stroke-dashoffset: 63.460px;"
+        />
+      </svg>
+    </span>
+    <div
+      class="MuiBox-root css-1o8dslu"
+    >
+      <div
+        class="MuiTypography-root MuiTypography-h4 css-1tradvb-MuiTypography-root"
+      >
+        50%
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`src/components/progress/circular-progress-with-label Render CircularProgressWithLabel component in light mode 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-rmz4vk"
+  >
+    <span
+      aria-valuenow="100"
+      class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorSecondary css-5nap9f-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 160px; height: 160px; transform: rotate(-90deg);"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+          style="stroke-dasharray: 126.920; stroke-dashoffset: 0.000px;"
+        />
+      </svg>
+    </span>
+    <span
+      aria-valuenow="50"
+      class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorPrimary css-1pzb5l9-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 160px; height: 160px; transform: rotate(-90deg);"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+          style="stroke-dasharray: 126.920; stroke-dashoffset: 63.460px;"
+        />
+      </svg>
+    </span>
+    <div
+      class="MuiBox-root css-1o8dslu"
+    >
+      <div
+        class="MuiTypography-root MuiTypography-h4 css-1pxewg2-MuiTypography-root"
+      >
+        50%
+      </div>
+    </div>
+  </div>
+</div>
+`;

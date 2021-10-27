@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`src/components/layout/navbar Render Fotter component 1`] = `
+exports[`src/components/layout/footer Render Footer component 1`] = `
 <div>
   <div
     class="MuiBox-root css-1swgbew"
