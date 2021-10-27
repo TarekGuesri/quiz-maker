@@ -57,7 +57,7 @@ export const Answers: React.FC<AnswersProps> = ({
 
   return (
     <>
-      {answers.map((answer) => (
+      {answers.map((answer, index) => (
         <ButtonBase
           key={answer.id}
           style={{ width: "100%" }}
@@ -72,6 +72,7 @@ export const Answers: React.FC<AnswersProps> = ({
               selectedAnswer === answer.id ? classes.selected : "",
             )}
             onClick={() => dispatch(selectAnswer(answer.id))}
+            data-testid={`answer-${index + 1}`}
           >
             <CardContent className={classes.cardContent}>
               <Typography variant="body1">{answer.text}</Typography>
