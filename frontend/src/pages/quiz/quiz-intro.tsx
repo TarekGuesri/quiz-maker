@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface QuizIntroProps {
-  description: string | undefined;
+  description?: string | undefined;
 }
 
 export const QuizIntro: React.FC<QuizIntroProps> = ({ description }) => {
@@ -45,10 +45,11 @@ export const QuizIntro: React.FC<QuizIntroProps> = ({ description }) => {
           alt="light-bulb-image"
           className={classes.ligthBulbImage}
           onLoad={() => setImageLoading(false)}
+          data-testid="light-bulb-image"
         />
       </div>
 
-      <Typography mb={4}>
+      <Typography mb={4} data-testid="quiz-description">
         {description || "This quiz doesn't have a descirption."}
       </Typography>
 
