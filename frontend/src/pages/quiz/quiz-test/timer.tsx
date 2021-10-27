@@ -16,14 +16,15 @@ export const Timer: React.FC = () => {
     let _minutes = minutes;
     let _hours = hours;
 
-    if (_seconds < 60) {
+    if (_seconds < 59) {
       setSeconds(_seconds + 1);
       _seconds += 1;
+    } else {
+      setSeconds(0);
+      _seconds = 0;
     }
 
-    if (_seconds === 60) {
-      setSeconds(0);
-
+    if (_seconds === 0) {
       if (_minutes < 59) {
         setMinutes(_minutes + 1);
         _minutes += 1;
@@ -48,5 +49,5 @@ export const Timer: React.FC = () => {
     };
   });
 
-  return <h2>{quizTimer}</h2>;
+  return <h2 data-testid="quiz-timer">{quizTimer}</h2>;
 };
