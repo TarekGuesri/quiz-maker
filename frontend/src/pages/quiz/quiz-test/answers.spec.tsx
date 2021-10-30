@@ -3,14 +3,12 @@ import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { store } from "src/redux/store";
 import { Provider } from "react-redux";
 import { Theme } from "src/components/theme";
+import { quizMock } from "src/__mocks__/quiz-mock";
 import { Answers } from "./answers";
 
-const answers = [
-  { id: "1", text: "Answer 1" },
-  { id: "2", text: "Answer 2" },
-  { id: "3", text: "Answer 3" },
-  { id: "4", text: "Answer 4" },
-];
+const answers = [...quizMock.questions[0].answers];
+
+console.log(answers);
 
 describe("src/pages/quiz/quiz-test/answers.tsx", () => {
   afterEach(() => cleanup());
