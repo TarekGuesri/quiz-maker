@@ -12,7 +12,7 @@ import { Router } from "react-router-dom";
 import { history } from "src/utils/history";
 import { Provider } from "react-redux";
 import { Theme } from "src/components/theme";
-import { setQuiz, resetState } from "src/redux/quiz/quiz-slice";
+import { submitSuccess, resetState } from "src/redux/quiz/quiz-slice";
 import { quizMock } from "src/__mocks__/quiz-mock";
 import Quiz from ".";
 
@@ -79,5 +79,29 @@ describe("src/pages/quiz/index.tsx", () => {
     fireEvent.click(startButton);
 
     expect(screen.queryByText("Question 1")).not.toBeNull();
+  });
+
+  test("should render QuizResult when getting a result in the store'", async () => {
+    (axios as jest.Mocked<typeof axios>).get.mockResolvedValue({
+      data: quizMock,
+    });
+
+    render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Theme>
+            <Quiz />
+          </Theme>
+        </Router>
+      </Provider>,
+    );
+
+    await waitFor(() =>
+      expect(screen.queryByText(quizMock.title)).not.toBeNull(),
+    );
+
+    store.dispatch(submitSuccess(50));
+
+    expect(screen.queryByText(/quiz result/i)).not.toBeNull();
   });
 });
