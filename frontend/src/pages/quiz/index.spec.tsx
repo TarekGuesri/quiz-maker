@@ -48,7 +48,36 @@ describe("src/pages/quiz/index.tsx", () => {
 
     expect(
       screen.queryByText(/wrong link or quiz has been deleted!/i),
-    ).not.toBeNull(),
-      expect(renderedComponent.container).toMatchSnapshot();
+    ).not.toBeNull();
+
+    expect(renderedComponent.container).toMatchSnapshot();
+  });
+
+  test("should render QuizIntro on successful request and render QuizTest when clicking on Start Quiz button'", async () => {
+    (axios as jest.Mocked<typeof axios>).get.mockResolvedValue({
+      data: quizMock,
+    });
+
+    render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Theme>
+            <Quiz />
+          </Theme>
+        </Router>
+      </Provider>,
+    );
+
+    await waitFor(() =>
+      expect(screen.queryByText(quizMock.title)).not.toBeNull(),
+    );
+
+    // Starting quiz
+    const startButton = screen.getByRole("button", {
+      name: /start quiz/i,
+    });
+    fireEvent.click(startButton);
+
+    expect(screen.queryByText("Question 1")).not.toBeNull();
   });
 });
