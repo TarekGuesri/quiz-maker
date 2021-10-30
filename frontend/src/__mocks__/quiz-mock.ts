@@ -1,332 +1,230 @@
-export const quizMock = {
-  _id: "617d505176471ee1e39fd388",
+import { Quiz } from "src/types";
+
+export const quizMock: Quiz = {
   title: "Mock Quiz",
   description: "This a mock quiz for testing",
   code: "sv5F7ohiX",
   questions: [
     {
-      _id: "617d505176471ee1e39fd374",
       content: "Question 1",
       answers: [
         {
-          _id: "617d505176471ee1e39fd324",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd324",
         },
         {
-          _id: "617d505176471ee1e39fd325",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd325",
         },
         {
-          _id: "617d505176471ee1e39fd326",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd326",
         },
         {
-          _id: "617d505176471ee1e39fd327",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd327",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd374",
     },
     {
-      _id: "617d505176471ee1e39fd375",
       content: "Question 2",
       answers: [
         {
-          _id: "617d505176471ee1e39fd32c",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd32c",
         },
         {
-          _id: "617d505176471ee1e39fd32d",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd32d",
         },
         {
-          _id: "617d505176471ee1e39fd32e",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd32e",
         },
         {
-          _id: "617d505176471ee1e39fd32f",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd32f",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd375",
     },
     {
-      _id: "617d505176471ee1e39fd376",
       content: "Question 3",
       answers: [
         {
-          _id: "617d505176471ee1e39fd334",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd334",
         },
         {
-          _id: "617d505176471ee1e39fd335",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd335",
         },
         {
-          _id: "617d505176471ee1e39fd336",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd336",
         },
         {
-          _id: "617d505176471ee1e39fd337",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd337",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd376",
     },
     {
-      _id: "617d505176471ee1e39fd377",
       content: "Question 4",
       answers: [
         {
-          _id: "617d505176471ee1e39fd33c",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd33c",
         },
         {
-          _id: "617d505176471ee1e39fd33d",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd33d",
         },
         {
-          _id: "617d505176471ee1e39fd33e",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd33e",
         },
         {
-          _id: "617d505176471ee1e39fd33f",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd33f",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd377",
     },
     {
-      _id: "617d505176471ee1e39fd378",
       content: "Question 5",
       answers: [
         {
-          _id: "617d505176471ee1e39fd344",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd344",
         },
         {
-          _id: "617d505176471ee1e39fd345",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd345",
         },
         {
-          _id: "617d505176471ee1e39fd346",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd346",
         },
         {
-          _id: "617d505176471ee1e39fd347",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd347",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd378",
     },
     {
-      _id: "617d505176471ee1e39fd379",
       content: "Question 6",
       answers: [
         {
-          _id: "617d505176471ee1e39fd34c",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd34c",
         },
         {
-          _id: "617d505176471ee1e39fd34d",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd34d",
         },
         {
-          _id: "617d505176471ee1e39fd34e",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd34e",
         },
         {
-          _id: "617d505176471ee1e39fd34f",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd34f",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd379",
     },
     {
-      _id: "617d505176471ee1e39fd37a",
       content: "Question 7",
       answers: [
         {
-          _id: "617d505176471ee1e39fd354",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd354",
         },
         {
-          _id: "617d505176471ee1e39fd355",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd355",
         },
         {
-          _id: "617d505176471ee1e39fd356",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd356",
         },
         {
-          _id: "617d505176471ee1e39fd357",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd357",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd37a",
     },
     {
-      _id: "617d505176471ee1e39fd37b",
       content: "Question 8",
       answers: [
         {
-          _id: "617d505176471ee1e39fd35c",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd35c",
         },
         {
-          _id: "617d505176471ee1e39fd35d",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd35d",
         },
         {
-          _id: "617d505176471ee1e39fd35e",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd35e",
         },
         {
-          _id: "617d505176471ee1e39fd35f",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd35f",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd37b",
     },
     {
-      _id: "617d505176471ee1e39fd37c",
       content: "Question 9",
       answers: [
         {
-          _id: "617d505176471ee1e39fd364",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd364",
         },
         {
-          _id: "617d505176471ee1e39fd365",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd365",
         },
         {
-          _id: "617d505176471ee1e39fd366",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd366",
         },
         {
-          _id: "617d505176471ee1e39fd367",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd367",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd37c",
     },
     {
-      _id: "617d505176471ee1e39fd37d",
       content: "Question 10",
       answers: [
         {
-          _id: "617d505176471ee1e39fd36c",
           text: "1",
-          __v: 0,
           id: "617d505176471ee1e39fd36c",
         },
         {
-          _id: "617d505176471ee1e39fd36d",
           text: "2",
-          __v: 0,
           id: "617d505176471ee1e39fd36d",
         },
         {
-          _id: "617d505176471ee1e39fd36e",
           text: "3",
-          __v: 0,
           id: "617d505176471ee1e39fd36e",
         },
         {
-          _id: "617d505176471ee1e39fd36f",
           text: "4",
-          __v: 0,
           id: "617d505176471ee1e39fd36f",
         },
       ],
-      __v: 0,
       id: "617d505176471ee1e39fd37d",
     },
   ],
-  createdAt: "2021-10-30T14:01:53.470Z",
-  updatedAt: "2021-10-30T14:01:53.470Z",
-  __v: 0,
   id: "617d505176471ee1e39fd388",
 };
