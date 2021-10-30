@@ -8,8 +8,6 @@ import { Answers } from "./answers";
 
 const answers = [...quizMock.questions[0].answers];
 
-console.log(answers);
-
 describe("src/pages/quiz/quiz-test/answers.tsx", () => {
   afterEach(() => cleanup());
 
