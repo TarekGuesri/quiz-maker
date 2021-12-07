@@ -171,4 +171,26 @@ describe("src/routes/rest/quizzes.ts", () => {
     expect(response.statusCode).toBe(404);
     expect(response.body).toBe("Quiz not found!");
   });
+
+  test("getQuizResult score", async () => {
+    // Testing correct answers
+    let formData = {
+      selectedAnswers: ["61645346dfd4aef3b10ee40c"],
+    };
+    let response = await request(app)
+      .post("/rest/quizzes/result/Cwm1QqX3E")
+      .send(formData);
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBe(100);
+
+    // Testing wrong answers
+    formData = {
+      selectedAnswers: ["61645346dfd4aef3b10ee40d"],
+    };
+    response = await request(app)
+      .post("/rest/quizzes/result/Cwm1QqX3E")
+      .send(formData);
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBe(0);
+  });
 });
