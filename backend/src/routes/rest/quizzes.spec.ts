@@ -10,6 +10,8 @@ import answers from "../../_data/answers.json";
 import questions from "../../_data/questions.json";
 import quizzes from "../../_data/quizzes.json";
 
+import { formData } from "./mockData";
+
 describe("src/routes/rest/quizzes.ts", () => {
   // Setup connection to the database
   beforeAll(async () => {
@@ -34,7 +36,22 @@ describe("src/routes/rest/quizzes.ts", () => {
     expect(response.body.length).toBe(quizzes.length);
   });
 
-  test("Testing createQuiz validation", async () => {
+  test("getQuizByCode should return a quiz, it if it doesn't exist, return error message", async () => {
+    // Testing successfull request
+    let testCode = "3SyiBUdNd";
+    let response = await request(app).get(`/rest/quizzes/${testCode}`);
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body.code).toBe(testCode);
+
+    // Testing not found
+    testCode = "test";
+    response = await request(app).get("/rest/quizzes/test");
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBe("Quiz not found!");
+  });
+
+  test("createQuiz validation", async () => {
     // title can't be empty,
     // questions must be a an array of a length between 10 and 10
     // selectedAnswers must be an array of strings
@@ -109,55 +126,6 @@ describe("src/routes/rest/quizzes.ts", () => {
   });
 
   test("createQuiz should return quiz code on a successful success, and if a question doesn't have an answer in the selected answers array, the first answer should be correct by default", async () => {
-    const formData = {
-      title: "Test Quiz",
-      questions: [
-        {
-          content: "Question 1",
-          answers: [
-            {
-              id: "1",
-              text: "1",
-            },
-            {
-              id: "2",
-              text: "2",
-            },
-            {
-              id: "3",
-              text: "3",
-            },
-            {
-              id: "4",
-              text: "4",
-            },
-          ],
-        },
-        {
-          content: "Question 2",
-          answers: [
-            {
-              id: "5",
-              text: "5",
-            },
-            {
-              id: "6",
-              text: "6",
-            },
-            {
-              id: "7",
-              text: "7",
-            },
-            {
-              id: "8",
-              text: "8",
-            },
-          ],
-        },
-      ],
-      selectedAnswers: ["3"],
-    };
-
     const response = await request(app).post("/rest/quizzes").send(formData);
 
     expect(response.statusCode).toBe(200);
@@ -179,5 +147,28 @@ describe("src/routes/rest/quizzes.ts", () => {
     // Answer 3 and 5 should be correct
     expect(createdQuiz?.questions[0].answers[2].isCorrect).toBe(true);
     expect(createdQuiz?.questions[1].answers[0].isCorrect).toBe(true);
+  });
+
+  test("getQuizResult should return validation error when no selected Answers were sent, and not found when quiz doesn't exist", async () => {
+    // Validation errors
+    let response = await request(app).post("/rest/quizzes/result/test");
+    const { errors } = response.body;
+
+    expect(response.statusCode).toBe(400);
+    expect(
+      errors.find(
+        (error: { param: string }) => error.param === "selectedAnswers",
+      ).msg,
+    ).toBe("Selected answers must be an array");
+
+    // Not found
+    const formData = {
+      selectedAnswers: [],
+    };
+    response = await request(app)
+      .post("/rest/quizzes/result/test")
+      .send(formData);
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBe("Quiz not found!");
   });
 });
