@@ -20,7 +20,13 @@ module.exports = {
   },
   plugins: ["unicorn"],
   rules: {
-    "unicorn/filename-case": "error",
+    "unicorn/filename-case": [
+      "error",
+      {
+        case: "kebabCase",
+        ignore: ["^setupTests\\.ts$"],
+      },
+    ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     camelcase: 1,
