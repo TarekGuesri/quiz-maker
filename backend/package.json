@@ -15,7 +15,7 @@
     ]
   },
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "set NODE_ENV=production&& node dist/server.js",
     "dev": "nodemon src/server.ts",
     "test": "jest",
     "test:cov": "jest --coverage",

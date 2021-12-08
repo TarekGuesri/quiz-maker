@@ -9,11 +9,14 @@
     "lint:check": "concurrently \"cd backend && yarn lint:check\" \"cd frontend && yarn lint:check\"",
     "lint:fix": "concurrently \"cd backend && yarn lint:fix\" \"cd frontend && yarn lint:fix\"",
     "test": "concurrently \"cd backend && yarn test\" \"cd frontend && yarn test\"",
-    "test:cov": "concurrently \"cd backend && yarn test:cov\" \"cd frontend && yarn test:cov\""
+    "test:cov": "concurrently \"cd backend && yarn test:cov\" \"cd frontend && yarn test:cov\"",
+    "buildtest": "cd backend && copyfiles src/** test",
+    "build": "concurrently \"cd backend && yarn build\" \"cd frontend && yarn build && copyfiles build/** ../backend/dist/client"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.2.1",
+    "copyfiles": "^2.4.1"
   }
 }
