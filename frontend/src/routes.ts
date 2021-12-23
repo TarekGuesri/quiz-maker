@@ -2,6 +2,7 @@ import {
   QuizPage,
   CreateQuizPage,
   LandingPage,
+  NotFoundPage,
 } from "src/pages/page-list-async";
 
 export const routes = [
@@ -18,6 +19,10 @@ export const routes = [
   {
     component: QuizPage,
     path: "/quiz/:quizCode",
+    exact: false,
+  },
+  {
+    component: NotFoundPage,
     exact: false,
   },
 ];

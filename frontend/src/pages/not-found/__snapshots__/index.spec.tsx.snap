@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/pages/not-found/index.tsx Render NotFound component 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root makeStyles-root-1 css-4nwtfp-MuiPaper-root-MuiCard-root"
+  >
+    <div
+      class="MuiCardContent-root makeStyles-cardContent-2 css-46bh2p-MuiCardContent-root"
+    >
+      <div
+        class="MuiTypography-root MuiTypography-h4 css-mzhb8u-MuiTypography-root"
+      >
+        404
+      </div>
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-tsgq0-MuiTypography-root"
+      >
+        Page not found
+      </h5>
+    </div>
+  </div>
+</div>
+`;
