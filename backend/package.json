@@ -12,7 +12,8 @@
       "src/app.ts",
       "src/server.ts",
       "dist/*"
-    ]
+    ],
+    "modulePathIgnorePatterns": ["dist/*"]
   },
   "scripts": {
     "start": "set NODE_ENV=production&& node dist/server.js",
