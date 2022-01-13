@@ -2,6 +2,8 @@
   "name": "quiz-maker",
   "version": "1.0.0",
   "description": "",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
   "scripts": {
     "server": "cd backend && yarn dev",
     "client": "cd frontend && yarn start",
