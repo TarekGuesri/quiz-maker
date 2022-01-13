@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === "prodcution") {
     max: 100,
   });
 
-  app.use(limiter);
+  app.use("/rest", limiter);
 }
 
 // Sanitize data
