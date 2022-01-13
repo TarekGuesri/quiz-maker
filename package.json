@@ -13,7 +13,8 @@
     "test": "concurrently \"cd backend && yarn test\" \"cd frontend && yarn test\"",
     "test:cov": "concurrently \"cd backend && yarn test:cov\" \"cd frontend && yarn test:cov\"",
     "build": "concurrently \"cd backend && yarn build\" \"cd frontend && yarn build && copyfiles build/** ../backend/dist/client",
-    "start":"yarn build && cd backend && yarn start"
+    "start":"cd backend && yarn start",
+    "start:build":"yarn build && yarn start"
   },
   "author": "",
   "license": "ISC",

@@ -16,9 +16,12 @@ const e = environments.indexOf(getEnv());
 
 export const config = {
   frontend: {
-    url: [`http://localhost:${frontendPort}`, "http://localhost:5000"][e],
+    url: [
+      `http://localhost:${frontendPort}`,
+      "https://quiz-maker.tariqguesri.com",
+    ][e],
   },
   api: {
-    url: ["http://localhost:5000", "http://localhost:5000"][e],
+    url: ["http://localhost:5000", "https://quiz-maker.tariqguesri.com"][e],
   },
 };
