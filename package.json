@@ -10,7 +10,6 @@
     "lint:fix": "concurrently \"cd backend && yarn lint:fix\" \"cd frontend && yarn lint:fix\"",
     "test": "concurrently \"cd backend && yarn test\" \"cd frontend && yarn test\"",
     "test:cov": "concurrently \"cd backend && yarn test:cov\" \"cd frontend && yarn test:cov\"",
-    "buildtest": "cd backend && copyfiles src/** test",
     "build": "concurrently \"cd backend && yarn build\" \"cd frontend && yarn build && copyfiles build/** ../backend/dist/client",
     "start":"yarn build && cd backend && yarn start"
   },
