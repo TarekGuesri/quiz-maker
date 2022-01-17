@@ -1,4 +1,4 @@
-# QuizMaker (In Progress)
+# QuizMaker
 
 ## Description
 
