@@ -40,6 +40,25 @@ MONGODB_URI_TEST=mongodb://localhost:27017/QuizMakerTest
 
 The frontend config can be found on `frontend/src/config/index.ts`
 
+To run the project in development mode, run:
+
+```sh
+yarn dev
+```
+
+In order to run it in production mode, run this: 
+
+```sh
+yarn start:build
+```
+
+Or you can start it without building it again (In case you made your produciton build already):
+
+```sh
+yarn start
+```
+
+
 ## Linting and Code Quality
 
 To lint all files run:
