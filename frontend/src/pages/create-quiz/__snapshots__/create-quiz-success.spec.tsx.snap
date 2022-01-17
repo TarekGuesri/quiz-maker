@@ -23,10 +23,10 @@ exports[`src/components/create-quiz-success.tsx Render CreateQuizSuccess compone
     </svg>
   </p>
   <div
-    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
+    class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
   >
     <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-77ccod-MuiGrid-root"
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1neqpay-MuiGrid-root"
     >
       Here's the link to your quiz:
        
@@ -38,10 +38,10 @@ exports[`src/components/create-quiz-success.tsx Render CreateQuizSuccess compone
       </a>
     </div>
     <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1kgfixx-MuiGrid-root"
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-8gvdwu-MuiGrid-root"
     >
       <button
-        class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButtonBase-root css-17gny3x-MuiButtonBase-root-MuiButton-root"
+        class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButtonBase-root  css-17gny3x-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
