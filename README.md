@@ -89,4 +89,4 @@ To run tests once with coverage, run
 yarn test:cov
 ```
 
-coverage data is stored in `./api/coverage` and `./web/coverage` directories
+coverage data is stored in `./backend/coverage` and `./frontend/coverage` directories
